@@ -1,56 +1,40 @@
-.clinic-footer {
-    background-color: #003366;
-    color: #ffffff;
-    padding: 20px 0;
-    text-align: center;
+.footer-clinic {
+    background-color: #70bd7d; /* Color de fondo */
+    color: #ffffff; /* Color del texto */
+    padding: 15px 0; /* Espaciado interno */
+    text-align: center; /* Alinear texto al centro */
+    width: 100%; /* Asegura que ocupe el ancho completo */
+    position: relative; /* O absolute, dependiendo del contexto */
+    top: 483px; /* Ajusta el valor según lo que necesites */
+    height: 20vh;
   }
   
-  .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  .footer-content {
+    display: flex; /* Usar Flexbox para organizar los elementos */
+    justify-content: space-between; /* Espacio entre secciones */
+    padding: 0 20px; /* Espaciado interno */
   }
   
-  .footer-section {
-    flex: 1;
-    padding: 10px;
-    min-width: 300px;
+  .clinic-info{
+    flex: 1; /* Cada sección ocupa el mismo espacio */
+    padding: 0 10px; /* Espaciado interno en las secciones */
   }
-  
-  .footer-section h4 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
-  
-  .footer-section p {
-    margin: 5px 0;
-  }
-  
-  .footer-section a {
-    color: #ffcc00;
-    text-decoration: none;
-  }
-  
-  .footer-section a:hover {
-    text-decoration: underline;
+
+  .social-media{
+    margin-top: 25px;
+    flex: 1; /* Cada sección ocupa el mismo espacio */
+    padding: 0 10px; 
   }
   
   .social-icons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 10px;
+    display: flex; /* Usar Flexbox para los iconos */
+    justify-content: center; /* Centrar iconos */
+
   }
   
   .social-icon img {
-    width: 32px;
-    height: 32px;
-    transition: transform 0.3s;
-  }
-  
-  .social-icon img:hover {
-    transform: scale(1.1);
+    width: 24px; /* Ajustar tamaño de los iconos */
+    margin: 0 15px; /* Espaciado entre iconos */
+    margin-top: 5px;
   }
   
