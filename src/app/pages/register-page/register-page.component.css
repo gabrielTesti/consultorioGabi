@@ -1,0 +1,65 @@
+form {
+    max-width: 600px; 
+    margin: 0 auto; 
+    padding: 20px; 
+    background-color: #ffffff; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+  }
+  
+  h2 {
+    color: #70bd7d; 
+    text-align: center; 
+    margin-bottom: 20px; 
+  }
+  
+  .name-fields {
+    display: flex; 
+    justify-content: space-between; 
+    margin-bottom: 16px; 
+  }
+  
+  .password-fields {
+    display: flex; 
+    justify-content: space-between; 
+    margin-bottom: 16px; 
+  }
+  
+  mat-form-field {
+    width: 100%; 
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  
+  button {
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 48%; 
+  }
+  
+  button[mat-button] {
+    background-color: #ffffff; 
+    color: #70bd7d; 
+  }
+  
+  button[mat-button]:hover {
+    background-color: #e6e6e6; 
+  }
+  
+  button[mat-raised-button] {
+    background-color: #70bd7d; 
+    color: #ffffff; 
+  }
+  
+  button[mat-raised-button]:hover {
+    background-color: #60a869;
+  }
+  
+  
