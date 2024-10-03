@@ -1,1 +1,47 @@
-<p>register-page works!</p>
+<h2>Registrarse</h2>
+<form>
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput placeholder="Ingrese su nombre" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Apellido</mat-label>
+    <input matInput placeholder="Ingrese su apellido" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Correo electrónico</mat-label>
+    <input matInput type="email" placeholder="Ingrese su correo" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Contraseña</mat-label>
+    <input matInput type="password" placeholder="Ingrese su contraseña" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Confirmar contraseña</mat-label>
+    <input matInput type="password" placeholder="Confirme su contraseña" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>DNI</mat-label>
+    <input matInput type="number" placeholder="Ingrese su DNI" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha de nacimiento</mat-label>
+    <input matInput type="date" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Teléfono de contacto</mat-label>
+    <input matInput type="tel" placeholder="Ingrese su número de teléfono" />
+  </mat-form-field>
+
+  <div class="buttons">
+    <button mat-button type="button" mat-dialog-close>Cancelar</button>
+    <button mat-raised-button color="primary" type="submit">Registrarse</button>
+  </div>
+</form>

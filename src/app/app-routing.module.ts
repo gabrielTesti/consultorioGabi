@@ -5,8 +5,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 
 const routes: Routes = [
   {path: "welcome", component: WelcomePageComponent },
-  {path: '', redirectTo: 'welcome', pathMatch: 'full' },
-  {path: 'register', component: RegisterPageComponent}
+  {path: '', redirectTo: 'welcome', pathMatch: 'full' }
   
  
   

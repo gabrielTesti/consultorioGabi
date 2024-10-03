@@ -12,6 +12,11 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderWelcomeComponent } from './shared/header-welcome/header-welcome.component';
 import { HeaderMainComponent } from './shared/header-main/header-main.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+
+
 
 @NgModule({
   declarations: [
@@ -26,7 +31,10 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
