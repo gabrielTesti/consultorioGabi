@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private loggedIn: boolean = true; // indica si el usuario esta logueado
+  private loggedIn: boolean = false; // indica si el usuario esta logueado
 
   constructor() { }
 
