@@ -7,8 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WelcomePageComponent } from "./pages/welcome-page/welcome-page.component"
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { LoginModalComponent } from './pages/welcome-page/login-modal/login-modal.component';
-import { HeaderComponent } from './shared/header/header.component';
+
 import { FooterComponent } from './shared/footer/footer.component';
+import { HeaderWelcomeComponent } from './shared/header-welcome/header-welcome.component';
+import { HeaderMainComponent } from './shared/header-main/header-main.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +18,9 @@ import { FooterComponent } from './shared/footer/footer.component';
     WelcomePageComponent,
     RegisterPageComponent,
     LoginModalComponent,
-    HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderWelcomeComponent,
+    HeaderMainComponent
   ],
   imports: [
     BrowserModule,

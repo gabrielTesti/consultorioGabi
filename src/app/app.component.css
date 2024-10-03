@@ -1,0 +1,6 @@
+.main-content {
+    padding: 20px; /* Espaciado interno */
+    margin-top: 20px; /* Espaciado entre el header y el contenido */
+    margin-bottom: 20px; /* Espaciado entre el contenido y el footer */
+    min-height: calc(100vh - 40vh); /* Ajusta según la altura total que quieres que ocupe el contenido */
+}

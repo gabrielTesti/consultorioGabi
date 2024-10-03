@@ -1,0 +1,32 @@
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #70bd7d;
+    color: #ffffff; 
+    padding: 15px;
+  }
+  
+  .welcome-text {
+    font-size: 1.5em;
+  }
+  
+  .auth-buttons {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .btn {
+    background-color: #ffffff;
+    color: #70bd7d;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #e6e6e6;
+  }
+  

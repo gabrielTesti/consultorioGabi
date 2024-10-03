@@ -1,40 +1,37 @@
 .footer-clinic {
-    background-color: #70bd7d; /* Color de fondo */
-    color: #ffffff; /* Color del texto */
-    padding: 15px 0; /* Espaciado interno */
-    text-align: center; /* Alinear texto al centro */
-    width: 100%; /* Asegura que ocupe el ancho completo */
-    position: relative; /* O absolute, dependiendo del contexto */
-    top: 483px; /* Ajusta el valor según lo que necesites */
-    height: 20vh;
-  }
-  
-  .footer-content {
-    display: flex; /* Usar Flexbox para organizar los elementos */
-    justify-content: space-between; /* Espacio entre secciones */
-    padding: 0 20px; /* Espaciado interno */
-  }
-  
-  .clinic-info{
-    flex: 1; /* Cada sección ocupa el mismo espacio */
-    padding: 0 10px; /* Espaciado interno en las secciones */
-  }
+  background-color: #70bd7d; /* Color de fondo */
+  color: #ffffff; /* Color del texto */
+  padding: 15px 0; /* Espaciado interno */
+  text-align: center; /* Alinear texto al centro */
+  width: 100%; /* Asegura que ocupe el ancho completo */
+  position: relative; /* Puedes cambiar a fixed o absolute */
+  bottom: 0; /* Mantener en la parte inferior */
+  height: 20vh; /* O un valor más acorde con tu diseño */
+  margin-top: auto; /* Asegura que no se superponga con contenido anterior */
+}
 
-  .social-media{
-    margin-top: 25px;
-    flex: 1; /* Cada sección ocupa el mismo espacio */
-    padding: 0 10px; 
-  }
-  
-  .social-icons {
-    display: flex; /* Usar Flexbox para los iconos */
-    justify-content: center; /* Centrar iconos */
+.footer-content {
+  display: flex; /* Usar Flexbox para organizar los elementos */
+  justify-content: space-between; /* Espacio entre secciones */
+  padding: 0 20px; /* Espaciado interno */
+}
 
-  }
-  
-  .social-icon img {
-    width: 24px; /* Ajustar tamaño de los iconos */
-    margin: 0 15px; /* Espaciado entre iconos */
-    margin-top: 5px;
-  }
-  
+.clinic-info, .social-media {
+  flex: 1; /* Cada sección ocupa el mismo espacio */
+  padding: 0 10px; /* Espaciado interno en las secciones */
+}
+
+.social-media {
+  margin-top: 25px; /* Margen superior */
+}
+
+.social-icons {
+  display: flex; /* Usar Flexbox para los iconos */
+  justify-content: center; /* Centrar iconos */
+}
+
+.social-icon img {
+  width: 24px; /* Ajustar tamaño de los iconos */
+  margin: 0 15px; /* Espaciado entre iconos */
+  margin-top: 5px;
+}
