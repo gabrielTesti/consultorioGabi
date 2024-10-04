@@ -15,6 +15,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { MainPageComponent } from './pages/main-page/main-page.component';
 
 
 
@@ -26,7 +28,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     FooterComponent,
     HeaderWelcomeComponent,
     HeaderMainComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

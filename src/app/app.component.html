@@ -1,29 +1,15 @@
 
-<!-- <app-header-welcome *ngIf="!authService.isLoggedIn()"></app-header-welcome>
-
-
-<app-header-main *ngIf="authService.isLoggedIn()"></app-header-main>
-
-
-<router-outlet></router-outlet>
-
-
-<app-footer></app-footer> -->
-
-
-
-
-
-
 <!-- header welcome se muestra si el usuario no está logueado -->
 <app-header-welcome *ngIf="!authService.isLoggedIn()"></app-header-welcome>
+
+
 
 <!-- header main se muestra solo si el usuario está logueado -->
 <app-header-main *ngIf="authService.isLoggedIn()"></app-header-main>
 
-<!-- Contenedor para el contenido principal -->
+<!-- contenedor para el contenido principal -->
 <div class="main-content">
-    <!-- Contenido principal -->
+    <!-- contenido principal -->
     <router-outlet></router-outlet>
 </div>
 

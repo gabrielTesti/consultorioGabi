@@ -21,6 +21,10 @@
   padding: 0 10px; /* Espaciado interno en las secciones */
 }
 
+.clinic-info{
+  margin-top: 25px;
+}
+
 .social-media {
   margin-top: 25px; /* Margen superior */
 }
@@ -35,3 +39,7 @@
   margin: 0 15px; /* Espaciado entre iconos */
   margin-top: 5px;
 }
+
+
+
+
