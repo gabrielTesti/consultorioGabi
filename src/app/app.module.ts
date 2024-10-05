@@ -21,6 +21,9 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { OperadorComponent } from './pages/operador/operador.component';
 import { MedicoComponent } from './pages/medico/medico.component';
 import { PacienteComponent } from './pages/paciente/paciente.component';
+import { NuevoTurnoComponent } from './pages/paciente/nuevo-turno/nuevo-turno.component';
+import { MisTurnosComponent } from './pages/paciente/mis-turnos/mis-turnos.component';
+import { MisDatosComponent } from './pages/paciente/mis-datos/mis-datos.component';
 
 
 
@@ -37,7 +40,10 @@ import { PacienteComponent } from './pages/paciente/paciente.component';
     AdminComponent,
     OperadorComponent,
     MedicoComponent,
-    PacienteComponent
+    PacienteComponent,
+    NuevoTurnoComponent,
+    MisTurnosComponent,
+    MisDatosComponent
   ],
   imports: [
     BrowserModule,

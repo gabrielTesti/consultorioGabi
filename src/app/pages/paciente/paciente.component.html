@@ -1,1 +1,15 @@
-<p>paciente works!</p>
+<!-- paciente.component.html -->
+<div class="paciente-container">
+    <h1>Bienvenido, {{ user.nombre }} {{ user.apellido }}</h1>
+    
+    <nav class="menu">
+      <ul>
+        <li><a routerLink="nuevo-turno">Nuevo Turno</a></li>
+        <li><a routerLink="mis-turnos">Mis Turnos</a></li>
+        <li><a routerLink="mis-datos">Mis Datos Personales</a></li>
+      </ul>
+    </nav>
+    
+    <router-outlet></router-outlet> <!-- Aquí se cargarán las páginas correspondientes -->
+  </div>
+  
