@@ -17,6 +17,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { OperadorComponent } from './pages/operador/operador.component';
+import { MedicoComponent } from './pages/medico/medico.component';
+import { PacienteComponent } from './pages/paciente/paciente.component';
 
 
 
@@ -29,7 +33,11 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
     HeaderWelcomeComponent,
     HeaderMainComponent,
     LoginPageComponent,
-    MainPageComponent
+    MainPageComponent,
+    AdminComponent,
+    OperadorComponent,
+    MedicoComponent,
+    PacienteComponent
   ],
   imports: [
     BrowserModule,
