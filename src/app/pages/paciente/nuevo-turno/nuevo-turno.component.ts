@@ -1,16 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-
-
-interface Turno {
-  cobertura: string;
-  especialidad: string;
-  profesional: string;
-  fecha: string;
-  hora: string;
-  notas: string;
-}
+import { Turno } from 'src/app/interfaces/turno';
+import { TurnoService } from 'src/app/services/turno.service';
 
 @Component({
   selector: 'app-nuevo-turno',
@@ -20,9 +12,9 @@ interface Turno {
 export class NuevoTurnoComponent {
 
   showModal: boolean = false;
-
   turnos: Turno[] = []; // almacena los turnos creados
-  constructor(private router: Router) {}
+
+  constructor(private router: Router, private turnoService: TurnoService) {}
 
   cobertura: string = '';
   especialidad: string = '';
@@ -32,18 +24,26 @@ export class NuevoTurnoComponent {
   notas: string = '';
 
   onSubmit(form: NgForm) {
-    if(form.valid)
-   this.showModal=true;
-    console.log('Turno creado:', {
-      cobertura: this.cobertura,
-      especialidad: this.especialidad,
-      profesional: this.profesional,
-      fecha: this.fecha,
-      hora: this.hora,
-      notas: this.notas
-    });  
+    if (form.valid) {
+      this.showModal = true;
+
+      const nuevoTurno: Turno = {
+        cobertura: this.cobertura,
+        especialidad: this.especialidad,
+        profesional: this.profesional,
+        fecha: this.fecha,
+        hora: this.hora,
+        notas: this.notas
+      };
+
+      this.turnoService.agregarTurno(nuevoTurno);
+    } else {
+      alert("Debes completar todos los campos para enviar el formulario");
+    }
   }
 
+
+  
   cancelar() {
     this.router.navigate(['/pacientes']);
   }
@@ -51,13 +51,8 @@ export class NuevoTurnoComponent {
   closeModal() {
     this.showModal = false; //cierra el modal
   }
-  
-  confirm(){
+
+  confirm() {
     this.router.navigate(['/pacientes/mis-turnos']);
   }
-
-
-
-
-
 }

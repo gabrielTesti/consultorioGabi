@@ -25,6 +25,7 @@ import { PacienteComponent } from './pages/paciente/paciente.component';
 import { NuevoTurnoComponent } from './pages/paciente/nuevo-turno/nuevo-turno.component';
 import { MisTurnosComponent } from './pages/paciente/mis-turnos/mis-turnos.component';
 import { MisDatosComponent } from './pages/paciente/mis-datos/mis-datos.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -54,7 +55,9 @@ import { MisDatosComponent } from './pages/paciente/mis-datos/mis-datos.componen
     MatInputModule,
     MatDialogModule,
     MatTooltipModule,
-    FormsModule
+    FormsModule,
+    MatExpansionModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

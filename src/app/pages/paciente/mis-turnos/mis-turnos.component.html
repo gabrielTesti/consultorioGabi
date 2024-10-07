@@ -1,1 +1,20 @@
-<p>mis-turnos works!</p>
+<div class="mis-turnos">
+    <h2>Mis Turnos</h2>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let turno of turnos">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ turno.fecha }} a las {{ turno.hora }}
+          </mat-panel-title>
+          <mat-panel-description>
+            Haz clic para ver detalles
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <p><strong>Especialista:</strong> {{ turno.profesional }}</p>
+          <p><strong>Especialidad:</strong> {{ turno.especialidad }}</p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  
