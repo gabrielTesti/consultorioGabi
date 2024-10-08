@@ -18,12 +18,21 @@
                 <mat-label>Profesional</mat-label>
                 <input matInput [(ngModel)]="profesional" name="profesional" required>
             </mat-form-field>
-            
+
+           <!--  
             <mat-form-field appearance="outline">
                 <mat-label>Fecha</mat-label>
                 <input type="date" matInput [(ngModel)]="fecha" name="fecha" required>
-            </mat-form-field>
-            
+            </mat-form-field>  -->
+
+            <mat-form-field appearance="outline">
+                <mat-label>Fecha</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="fecha" name="fecha" required>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> 
+ 
+
             <mat-form-field appearance="outline">
                 <mat-label>Hora</mat-label>
                 <input type="time" matInput [(ngModel)]="hora" name="hora" required>
@@ -51,8 +60,8 @@
 
 <div class="modal" *ngIf="showModal">
     <div class="modal-content">
-      <span class="close" (click)="closeModal()">&times;</span> <!-- &times representa una X para cerrar el modal en HTML -->
-      <p>Turno confirmado con {{ profesional }}, el día {{ fecha }} a las {{ hora }}</p>
+      <span class="close" (click)="closeModal()">&times;</span> 
+      <p>Turno confirmado con {{ profesional }}, el día {{ fecha | date}} a las {{ hora }}</p>
       <button (click)="confirm()">Aceptar</button>
     </div>
   </div>
@@ -60,3 +69,4 @@
 
 
 
+ 

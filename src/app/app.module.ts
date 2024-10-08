@@ -26,6 +26,9 @@ import { NuevoTurnoComponent } from './pages/paciente/nuevo-turno/nuevo-turno.co
 import { MisTurnosComponent } from './pages/paciente/mis-turnos/mis-turnos.component';
 import { MisDatosComponent } from './pages/paciente/mis-datos/mis-datos.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+
 
 
 
@@ -56,7 +59,11 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatDialogModule,
     MatTooltipModule,
     FormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+
+   
 
   ],
   providers: [],
