@@ -10,8 +10,6 @@ private turnos: Turno[] = []
 
 constructor() { }
 
-
-
 agregarTurno(turno: Turno){
 this.turnos.push(turno);
 this.ordenarTurnos();
@@ -20,6 +18,39 @@ this.ordenarTurnos();
 obtenerTurnos(): Turno[]{
   return this.turnos;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
