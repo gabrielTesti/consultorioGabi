@@ -1,0 +1,96 @@
+
+.mat-dialog-content {
+    padding: 20px;
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+  }
+  
+  
+  mat-form-field {
+    width: 100%; 
+    margin-bottom: 1rem; 
+  }
+  
+  
+  mat-error {
+    font-size: 0.875rem; 
+    color: #d32f2f; 
+  }
+  
+
+  .buttons {
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 1rem; 
+  }
+  
+  
+  button {
+    font-family: 'Roboto', sans-serif;
+    border: none; 
+    padding: 10px 15px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    width: 25%; 
+    border-radius: 4px; 
+  }
+  
+  
+  button[mat-button] {
+    background-color: #ffffff;
+    color: #70bd7d; 
+    border: 1px solid #70bd7d; 
+  }
+  
+  
+  button[mat-button]:hover {
+    background-color: #e6e6e6; 
+  }
+  
+  
+  button[mat-raised-button] {
+    background-color: #70bd7d; 
+    color: #ffffff; 
+  }
+  
+  
+  button[mat-raised-button]:hover {
+    background-color: #60a869;
+  }
+  
+ 
+  .show-password {
+    cursor: pointer; 
+  }
+  
+  
+  .card {
+    padding: 20px; 
+    background-color: #ffffff; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px; 
+  }
+  
+  .eye-button {
+    width: 30px; 
+    height: 30px; 
+    padding: 0; 
+    min-width: 0; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border: none; 
+    background-color: transparent;
+    cursor: pointer; 
+  }
+  
+  
+  .mat-icon {
+    font-size: 20px; 
+  }
+  button[mat-icon-button]{
+  width: 60px;
+  margin-left: 20px;
+  }

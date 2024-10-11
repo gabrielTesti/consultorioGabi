@@ -28,6 +28,10 @@ import { MisDatosComponent } from './pages/paciente/mis-datos/mis-datos.componen
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+
 
 
 
@@ -61,7 +65,10 @@ import {MatNativeDateModule} from '@angular/material/core';
     FormsModule,
     MatExpansionModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatIconModule
 
    
 
