@@ -5,6 +5,7 @@ import { PacienteComponent } from './pages/paciente/paciente.component';
 import { NuevoTurnoComponent } from './pages/paciente/nuevo-turno/nuevo-turno.component';
 import { MisTurnosComponent } from './pages/paciente/mis-turnos/mis-turnos.component';
 import { MisDatosComponent } from './pages/paciente/mis-datos/mis-datos.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 const routes: Routes = [
   {path: "welcome", component: WelcomePageComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: "pacientes/nuevo-turno", component: NuevoTurnoComponent },
   { path: "pacientes/mis-turnos", component: MisTurnosComponent },
   { path: "pacientes/mis-datos", component: MisDatosComponent },
+  {path: "admin", component: AdminComponent}
 ];
 
 @NgModule({

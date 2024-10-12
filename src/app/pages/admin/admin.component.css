@@ -1,0 +1,36 @@
+.admin-container {
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .filter {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .user-list {
+    margin-top: 20px;
+  }
+  
+  .user-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .user-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+  }
+  

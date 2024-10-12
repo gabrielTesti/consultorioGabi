@@ -1,1 +1,77 @@
-<p>admin works!</p>
+<div class="admin-container">
+    <h2>Gestión de Usuarios</h2>
+    
+    <input type="text" placeholder="Filtrar por nombre, apellido o rol" (input)="filtrarUsuarios($event)" />
+  
+    <table>
+      <thead>
+        <tr>
+          <th>DNI</th>
+          <th>Apellido</th>
+          <th>Nombre</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Rol</th>
+          <th>Email</th>
+          <th>Teléfono</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of filteredUsuarios">
+          <td>{{ usuario.dni }}</td>
+          <td>{{ usuario.apellido }}</td>
+          <td>{{ usuario.nombre }}</td>
+          <td>{{ usuario.fecha_nacimiento | date:'shortDate' }}</td>
+          <td>{{ usuario.rol }}</td>
+          <td>{{ usuario.email }}</td>
+          <td>{{ usuario.telefono }}</td>
+          <td>
+            <button (click)="editarUsuario(usuario)">Editar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <form [formGroup]="usuarioForm" (ngSubmit)="agregarUsuario()">
+      <h3>{{ isEditing ? 'Editar Usuario' : 'Agregar Usuario' }}</h3>
+      <div>
+        <label>DNI</label>
+        <input formControlName="dni" />
+      </div>
+      <div>
+        <label>Apellido</label>
+        <input formControlName="apellido" />
+      </div>
+      <div>
+        <label>Nombre</label>
+        <input formControlName="nombre" />
+      </div>
+      <div>
+        <label>Fecha de Nacimiento</label>
+        <input type="date" formControlName="fecha_nacimiento" />
+      </div>
+      <div>
+        <label>Rol</label>
+        <select formControlName="rol">
+          <option value="operador">Operador</option>
+          <option value="medico">Medico</option>
+          <option value="administrador">Administrador</option>
+        </select>
+      </div>
+      <div>
+        <label>Email</label>
+        <input formControlName="email" />
+      </div>
+      <div>
+        <label>Teléfono</label>
+        <input formControlName="telefono" />
+      </div>
+      <div>
+        <label>Contraseña</label>
+        <input type="password" formControlName="password" />
+      </div>
+      <button type="submit">{{ isEditing ? 'Actualizar' : 'Agregar' }}</button>
+      <button type="button" (click)="limpiarFormulario()">Cancelar</button>
+    </form>
+  </div>
+  
