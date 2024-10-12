@@ -31,6 +31,9 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import { TurnosProgramadosComponent } from './pages/medico/turnos-programados/turnos-programados.component';
+import { GestionAgendaComponent } from './pages/medico/gestion-agenda/gestion-agenda.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -52,7 +55,9 @@ import {MatIconModule} from '@angular/material/icon';
     PacienteComponent,
     NuevoTurnoComponent,
     MisTurnosComponent,
-    MisDatosComponent
+    MisDatosComponent,
+    TurnosProgramadosComponent,
+    GestionAgendaComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +73,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatNativeDateModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule
 
    
 
