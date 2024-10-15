@@ -29,7 +29,7 @@
             <td mat-cell *matCellDef="let turno" (click)="mostrarNotasTurno(turno)"> {{ turno.cobertura }} </td>
         </ng-container>
   
-        <!-- Filas de la tabla -->
+        <!-- filas de la tabla -->
         <tr mat-header-row *matHeaderRowDef="['hora', 'profesional', 'especialidad', 'cobertura']"></tr>
         <tr mat-row *matRowDef="let row; columns: ['hora', 'profesional', 'especialidad', 'cobertura'];"></tr>
     </table>
