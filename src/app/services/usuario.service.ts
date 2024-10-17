@@ -7,23 +7,25 @@ import { Usuario } from '../interfaces/usuario';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private apiUrl = 'http://tu-api-url.com/api/usuarios';
+  // Cambia la URL base para que coincida con tus rutas
+  private apiUrl = 'http://localhost:4000/api';
 
   constructor(private http: HttpClient) { }
 
   obtenerUsuarios(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.apiUrl);
+    // Ajusta la URL para que coincida con la ruta de tu backend
+    return this.http.get<Usuario[]>(`${this.apiUrl}/obtenerUsuarios`);
   }
 
   obtenerUsuario(id: number): Observable<Usuario> {
-    return this.http.get<Usuario>(`${this.apiUrl}/${id}`);
+    return this.http.get<Usuario>(`${this.apiUrl}/obtenerUsuario/${id}`);
   }
 
   crearUsuario(usuario: Usuario): Observable<any> {
-    return this.http.post(this.apiUrl, usuario);
+    return this.http.post(`${this.apiUrl}/crearUsuario`, usuario);
   }
 
   actualizarUsuario(id: number, usuario: Usuario): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, usuario);
+    return this.http.put(`${this.apiUrl}/actualizarUsuario/${id}`, usuario);
   }
 }
