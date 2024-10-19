@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Turno } from 'src/app/interfaces/turno';
+import { TurnosSimuladosService } from 'src/app/services/turnos-simulados.service';
 
 @Component({
   selector: 'app-turnos-programados',
@@ -14,49 +15,16 @@ export class TurnosProgramadosComponent implements OnInit {
   mostrarNotas: boolean = false; 
   notasTurno: string | null = null; // notas del turno seleccionado
 
+
+  constructor(private turnosSimuladosService: TurnosSimuladosService){}
+
   ngOnInit(): void {
     this.cargarTurnos(); 
     this.filtrarTurnos(); 
   }
 
   cargarTurnos() {
-    // simulación de carga de datos
-    this.turnos = [
-      {
-        cobertura: 'PAMI',
-        especialidad: 'Pediatría',
-        profesional: 'Dr. Juan Pérez',
-        fecha: '2024-10-12', // Mantener como string
-        hora: '09:00',
-        notas: 'Control de crecimiento'
-      },
-      {
-        cobertura: 'PAMI',
-        especialidad: 'Odontología',
-        profesional: 'Dr. Juan Pérez',
-        fecha: '2024-10-13', // Mantener como string
-        hora: '09:00',
-        notas: 'Control de crecimiento'
-      },
-      {
-        cobertura: 'IAPOS',
-        especialidad: 'Cardiología',
-        profesional: 'Dra. Ana Gómez',
-        fecha: '2024-10-19',
-        hora: '10:00',
-        notas: 'Chequeo de rutina'
-      },
-      {
-        cobertura: 'IAPOS',
-        especialidad: 'Odontología',
-        profesional: 'Dr. Luis Fernández',
-        fecha: '2024-10-12',
-        hora: '11:00',
-        notas: 'Revisión dental'
-      },
-      
-      
-    ];
+    this.turnos = this.turnosSimuladosService.obtenerTurnosSimulados();
   }
 
   filtrarTurnos() {
