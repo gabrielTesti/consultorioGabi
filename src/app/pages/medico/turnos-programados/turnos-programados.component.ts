@@ -42,7 +42,7 @@ export class TurnosProgramadosComponent implements OnInit {
         cobertura: 'IAPOS',
         especialidad: 'Cardiología',
         profesional: 'Dra. Ana Gómez',
-        fecha: '2024-10-12',
+        fecha: '2024-10-19',
         hora: '10:00',
         notas: 'Chequeo de rutina'
       },

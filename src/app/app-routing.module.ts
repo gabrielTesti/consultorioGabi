@@ -9,6 +9,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { MedicoComponent } from './pages/medico/medico.component';
 import { TurnosProgramadosComponent } from './pages/medico/turnos-programados/turnos-programados.component';
 import { GestionAgendaComponent } from './pages/medico/gestion-agenda/gestion-agenda.component';
+import { OperadorComponent } from './pages/operador/operador.component';
 
 const routes: Routes = [
   {path: "welcome", component: WelcomePageComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: "admin", component: AdminComponent},
   {path: "medico", component: MedicoComponent},
   {path: "medico/turnos-programados", component: TurnosProgramadosComponent},
-  {path: "medico/gestion-agenda", component: GestionAgendaComponent}
+  {path: "medico/gestion-agenda", component: GestionAgendaComponent},
+  {path: "operador", component: OperadorComponent}
 ];
 
 @NgModule({
