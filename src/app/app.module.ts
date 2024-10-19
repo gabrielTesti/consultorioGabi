@@ -33,6 +33,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { TurnosProgramadosComponent } from './pages/medico/turnos-programados/turnos-programados.component';
 import { GestionAgendaComponent } from './pages/medico/gestion-agenda/gestion-agenda.component';
 import { MatTableModule } from '@angular/material/table';
+import { TurnosProgramadosOperadorComponent } from './pages/operador/turnos-programados-operador/turnos-programados-operador.component';
+import { RegistrarPacientesComponent } from './pages/operador/registrar-pacientes/registrar-pacientes.component';
 
 
 
@@ -56,7 +58,9 @@ import { MatTableModule } from '@angular/material/table';
     MisTurnosComponent,
     MisDatosComponent,
     TurnosProgramadosComponent,
-    GestionAgendaComponent
+    GestionAgendaComponent,
+    TurnosProgramadosOperadorComponent,
+    RegistrarPacientesComponent
   ],
   imports: [
     BrowserModule,
