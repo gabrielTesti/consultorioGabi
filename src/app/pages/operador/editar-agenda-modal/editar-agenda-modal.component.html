@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Editar Agenda - {{ data.medico }}</h2>
+
+<div mat-dialog-content>
+  <p>Modifica el horario de atención:</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Horario</mat-label>
+    <input matInput [(ngModel)]="horario" placeholder="Ej: 08:00 - 12:00">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button (click)="guardar()">Guardar Cambios</button>
+</div>

@@ -31,6 +31,7 @@ export class RegisterPageComponent {
       
       return;
     }
+    
     this.usuarioService.crearUsuario(this.usuario).subscribe({
       next: (response) => {
         console.log('Usuario registrado exitosamente:', response);

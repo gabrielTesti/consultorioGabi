@@ -5,67 +5,37 @@ import { Turno } from '../interfaces/turno';
   providedIn: 'root'
 })
 export class TurnoService {
-private turnos: Turno[] = []
+  private turnos: Turno[] = [];
 
+  constructor() { }
 
-constructor() { }
+  agregarTurno(turno: Turno) {
+    this.turnos.push(turno);
+    this.ordenarTurnos();
+  }
 
-agregarTurno(turno: Turno){
-this.turnos.push(turno);
-this.ordenarTurnos();
-}
+  obtenerTurnos(): Turno[] {
+    return this.turnos;
+  }
 
-obtenerTurnos(): Turno[]{
-  return this.turnos;
-}
+  obtenerMedicosPorFecha(fecha: string) {
+    const medicos = this.turnos
+      .filter(turno => turno.fecha === fecha)
+      .map(turno => ({
+        nombre: turno.profesional,
+        especialidad: turno.especialidad,
+        horarioAtencion: `${turno.hora}`, 
+      }));
 
+    return medicos;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//borrador ordena del mas antiguo al mas nuevo
-private ordenarTurnos() {
-  this.turnos.sort((a, b) => {
-  const fechaA = new Date(`${a.fecha} ${a.hora}`).getTime();
-  const fechaB = new Date(`${b.fecha} ${b.hora}`).getTime();
-  return fechaA - fechaB;
-  });
-}
-
-
-
-
-
-
+  // ordenar del mas antiguo al mas nuevo
+  private ordenarTurnos() {
+    this.turnos.sort((a, b) => {
+      const fechaA = new Date(`${a.fecha} ${a.hora}`).getTime();
+      const fechaB = new Date(`${b.fecha} ${b.hora}`).getTime();
+      return fechaA - fechaB;
+    });
+  }
 }

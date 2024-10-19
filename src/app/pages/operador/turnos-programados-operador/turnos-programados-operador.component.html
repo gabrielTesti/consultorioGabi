@@ -1,1 +1,52 @@
-<p>turnos-programados-operador works!</p>
+<div>
+  <h2>Turnos Programados</h2>
+
+  <label for="fecha">Seleccionar Fecha:</label>
+  <input type="date" id="fecha" [(ngModel)]="fechaSeleccionada" (change)="cambiarFecha($event)" />
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre del Médico</th>
+        <th>Especialidad</th>
+        <th>Horario de Atención</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let medico of medicos">
+        <td>{{ medico.nombre }}</td>
+        <td>{{ medico.especialidad }}</td>
+        <td>{{ medico.horarioAtencion }}</td>
+        <td>
+          <button (click)="editarAgenda(medico.nombre)">✏️ Editar Agenda</button>
+          <button (click)="verTurnos(medico.nombre)">👁️ Ver Turnos</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="medicoSeleccionado">
+    <h3>Turnos Confirmados para {{ medicoSeleccionado }}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Notas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let turno of turnosConfirmados">
+          <td>{{ turno.fecha }}</td>
+          <td>{{ turno.hora }}</td>
+          <td>{{ turno.notas }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="turnosConfirmados.length === 0">
+      <p>No hay turnos confirmados para este médico.</p>
+    </div>
+  </div>
+</div>
