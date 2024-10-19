@@ -7,8 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WelcomePageComponent } from "./pages/welcome-page/welcome-page.component"
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
-
-
+import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderWelcomeComponent } from './shared/header-welcome/header-welcome.component';
 import { HeaderMainComponent } from './shared/header-main/header-main.component';
@@ -62,6 +61,7 @@ import { MatTableModule } from '@angular/material/table';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
