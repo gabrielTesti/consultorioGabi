@@ -36,6 +36,7 @@ import { MatTableModule } from '@angular/material/table';
 import { TurnosProgramadosOperadorComponent } from './pages/operador/turnos-programados-operador/turnos-programados-operador.component';
 import { RegistrarPacientesComponent } from './pages/operador/registrar-pacientes/registrar-pacientes.component';
 import { EditarAgendaModalComponent } from './pages/operador/editar-agenda-modal/editar-agenda-modal.component';
+import { TurnosDialogComponent } from './pages/operador/turnos-dialog/turnos-dialog.component';
 
 
 
@@ -62,7 +63,8 @@ import { EditarAgendaModalComponent } from './pages/operador/editar-agenda-modal
     GestionAgendaComponent,
     TurnosProgramadosOperadorComponent,
     RegistrarPacientesComponent,
-    EditarAgendaModalComponent
+    EditarAgendaModalComponent,
+    TurnosDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,24 @@
+/* Puedes agregar estilos aquí según lo desees */
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th {
+    background-color: #f2f2f2; /* Color de fondo para la cabecera */
+    padding: 12px;
+  }
+  
+  td {
+    border: 1px solid #ddd; /* Borde de las celdas */
+    padding: 12px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color de fondo alternativo para filas */
+  }
+  
+  tr:hover {
+    background-color: #f1f1f1; /* Color al pasar el cursor por encima de filas */
+  }
+  

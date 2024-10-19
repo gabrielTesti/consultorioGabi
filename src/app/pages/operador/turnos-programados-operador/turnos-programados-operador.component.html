@@ -26,8 +26,12 @@
     </tbody>
   </table>
 
-  <div *ngIf="medicoSeleccionado">
+  <!-- Modal para mostrar los turnos -->
+  <ng-template matDialogTitle *ngIf="medicoSeleccionado">
     <h3>Turnos Confirmados para {{ medicoSeleccionado }}</h3>
+  </ng-template>
+
+<!--   <div *ngIf="medicoSeleccionado">
     <table>
       <thead>
         <tr>
@@ -50,3 +54,4 @@
     </div>
   </div>
 </div>
+ -->

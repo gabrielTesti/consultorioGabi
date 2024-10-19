@@ -72,7 +72,7 @@ button:hover {
     background-color: #60a869; /* Color verde más oscuro en hover */
 }
 
-/* Estilo para la tabla de horarios */
+
 table {
     width: 80%;
     border-collapse: collapse;
@@ -81,7 +81,7 @@ table {
 }
 
 th {
-    background-color: #f2f2f2; /* Color de fondo para la cabecera */
+    background-color: #f2f2f2; 
     padding: 12px;
     text-align: left;
 }

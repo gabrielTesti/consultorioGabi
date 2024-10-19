@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Turnos Confirmados</h2>
+<mat-dialog-content>
+  <table>
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Notas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let turno of data.turnos">
+        <td>{{ turno.fecha }}</td>
+        <td>{{ turno.hora }}</td>
+        <td>{{ turno.notas }}</td>
+      </tr>
+    </tbody>
+  </table>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="close()">Cerrar</button>
+</mat-dialog-actions>
