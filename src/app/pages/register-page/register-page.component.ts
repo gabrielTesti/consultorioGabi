@@ -20,9 +20,17 @@ export class RegisterPageComponent {
     telefono: ''
   };
 
+
+  confirmPassword: string = "";
+
   constructor(private usuarioService: UsuarioService) { }
 
   registrarUsuario(): void {
+    if (this.usuario.password !== this.confirmPassword) {
+      console.error('Las contraseñas no coinciden');
+      
+      return;
+    }
     this.usuarioService.crearUsuario(this.usuario).subscribe({
       next: (response) => {
         console.log('Usuario registrado exitosamente:', response);
