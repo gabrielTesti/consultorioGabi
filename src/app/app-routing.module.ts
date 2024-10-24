@@ -15,7 +15,8 @@ import { RegistrarPacientesComponent } from './pages/operador/registrar-paciente
 
 const routes: Routes = [
   {path: "welcome", component: WelcomePageComponent },
-  {path: '', redirectTo: 'welcome', pathMatch: 'full' },
+  {path: "", redirectTo: 'welcome', pathMatch: 'full' },
+  { path: "**", redirectTo: 'welcome' },
   {path: "pacientes", component: PacienteComponent},
   { path: "pacientes/nuevo-turno", component: NuevoTurnoComponent },
   { path: "pacientes/mis-turnos", component: MisTurnosComponent },
