@@ -7,13 +7,11 @@ import { Usuario } from '../interfaces/usuario';
   providedIn: 'root'
 })
 export class UsuarioService {
-  // Cambia la URL base para que coincida con tus rutas
-  private apiUrl = 'http://localhost:4000/api';
+  private apiUrl = 'http://localhost:4000/api'; // Ajusta esta URL según sea necesario
 
   constructor(private http: HttpClient) { }
 
   obtenerUsuarios(): Observable<Usuario[]> {
-    // Ajusta la URL para que coincida con la ruta de tu backend
     return this.http.get<Usuario[]>(`${this.apiUrl}/obtenerUsuarios`);
   }
 

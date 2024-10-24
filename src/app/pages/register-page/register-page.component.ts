@@ -8,7 +8,6 @@ import { Usuario } from 'src/app/interfaces/usuario';
   styleUrls: ['./register-page.component.css']
 })
 export class RegisterPageComponent {
-
   usuario: Usuario = {
     dni: '',
     apellido: '',
@@ -20,7 +19,6 @@ export class RegisterPageComponent {
     telefono: ''
   };
 
-
   confirmPassword: string = "";
 
   constructor(private usuarioService: UsuarioService) { }
@@ -28,10 +26,9 @@ export class RegisterPageComponent {
   registrarUsuario(): void {
     if (this.usuario.password !== this.confirmPassword) {
       console.error('Las contraseñas no coinciden');
-      
       return;
     }
-    
+
     this.usuarioService.crearUsuario(this.usuario).subscribe({
       next: (response) => {
         console.log('Usuario registrado exitosamente:', response);

@@ -5,45 +5,37 @@
       <mat-label>Nombre</mat-label>
       <input matInput [(ngModel)]="usuario.nombre" name="nombre" required />
     </mat-form-field>
-
     <mat-form-field appearance="outline">
       <mat-label>Apellido</mat-label>
       <input matInput [(ngModel)]="usuario.apellido" name="apellido" required />
     </mat-form-field>
   </div>
-
   <mat-form-field appearance="outline">
     <mat-label>Correo electrónico</mat-label>
     <input matInput type="email" [(ngModel)]="usuario.email" name="email" required />
   </mat-form-field>
-
   <div class="password-fields">
     <mat-form-field appearance="outline">
       <mat-label>Contraseña</mat-label>
       <input matInput type="password" [(ngModel)]="usuario.password" name="password" required />
     </mat-form-field>
-
     <mat-form-field appearance="outline">
       <mat-label>Confirmar contraseña</mat-label>
-      <input matInput type="password" required />
+      <input matInput type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required />
     </mat-form-field>
   </div>
-
   <mat-form-field appearance="outline">
     <mat-label>DNI</mat-label>
     <input matInput type="number" [(ngModel)]="usuario.dni" name="dni" required />
   </mat-form-field>
-
   <mat-form-field appearance="outline">
     <mat-label>Fecha de nacimiento</mat-label>
     <input matInput type="date" [(ngModel)]="usuario.fecha_nacimiento" name="fecha_nacimiento" required />
   </mat-form-field>
-
   <mat-form-field appearance="outline">
     <mat-label>Teléfono de contacto</mat-label>
     <input matInput type="tel" [(ngModel)]="usuario.telefono" name="telefono" />
   </mat-form-field>
-
   <div class="buttons">
     <button mat-button type="button" mat-dialog-close>Cancelar</button>
     <button mat-raised-button color="primary" type="submit">Registrarse</button>
