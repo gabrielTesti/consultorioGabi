@@ -8,27 +8,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
-  dni: string = '';
+  usuario: string = '';
   password: string = '';
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  login(): void {
-    this.authService.login(this.dni, this.password).subscribe({
-      next: (response) => {
-        if (response.success) {
-          console.log('Login exitoso:', response);
-          // Redirigir a la página principal u otra página
-          this.router.navigate(['/home']);
+  login() {
+    this.authService.login(this.usuario, this.password).subscribe(
+      response => {
+        if (response.codigo === 200) {
+          localStorage.setItem('token', response.jwt);
+          this.router.navigate(['/dashboard']); // Redirige al dashboard u otra ruta
         } else {
-          console.error('Error al iniciar sesión:', response.message);
-          // Mostrar un mensaje de error al usuario
+          alert('Usuario o contraseña incorrecta');
         }
       },
-      error: (err) => {
-        console.error('Error al iniciar sesión:', err);
-        // Mostrar un mensaje de error al usuario
+      error => {
+        console.error('Error en el login', error);
+        alert('Ocurrió un error en el login');
       }
-    });
+    );
   }
 }

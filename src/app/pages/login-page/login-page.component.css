@@ -1,61 +1,37 @@
-
- .login-popup {
-  background-color: #ffffff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+.login-container {
   max-width: 400px;
   margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
 }
 
-h2 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
+.login-container h2 {
   text-align: center;
-  color: #70bd7d;
+  margin-bottom: 20px;
 }
 
-form {
+.login-container form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
 }
 
-.full-width {
-  width: 100%;
+.login-container mat-form-field {
+  margin-bottom: 15px;
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-
-button {
-  font-family: 'Roboto', sans-serif;
+.login-container button {
+  padding: 10px;
   border: none;
-  padding: 8px 12px;
+  border-radius: 5px;
+  background-color: #70bd7d;
+  color: white;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 48%; 
 }
 
-button[mat-button] {
-  background-color: #ffffff; 
-  color: #70bd7d; 
-}
-
-button[mat-button]:hover {
-  background-color: #e6e6e6; 
-}
-
-button[mat-raised-button] {
-  background-color: #70bd7d; 
-  color: #ffffff; 
-}
-
-button[mat-raised-button]:hover {
-  background-color: #60a869; 
+.login-container button:hover {
+  background-color: #0056b3;
 }

@@ -1,12 +1,14 @@
-<h2>Iniciar Sesión</h2>
-<form (ngSubmit)="login()">
-  <mat-form-field appearance="outline">
-    <mat-label>DNI</mat-label>
-    <input matInput type="text" [(ngModel)]="dni" name="dni" required />
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Contraseña</mat-label>
-    <input matInput type="password" [(ngModel)]="password" name="password" required />
-  </mat-form-field>
-  <button mat-raised-button color="primary" type="submit">Iniciar Sesión</button>
-</form>
+<div class="login-container">
+  <h2>Login</h2>
+  <form (ngSubmit)="login()">
+    <mat-form-field appearance="outline">
+      <mat-label>DNI</mat-label>
+      <input matInput type="text" id="usuario" [(ngModel)]="usuario" name="usuario" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" id="password" [(ngModel)]="password" name="password" required>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Login</button>
+  </form>
+</div>
