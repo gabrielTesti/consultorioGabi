@@ -64,7 +64,7 @@ export class LoginPageComponent {
 
   redirigirSegunRol(rol: string) {
     switch (rol) {
-      case 'administrador':
+      case 'admin':
         this.router.navigate(['/admin']).then(() => this.dialogRef.close());
         break;
       case 'medico':
