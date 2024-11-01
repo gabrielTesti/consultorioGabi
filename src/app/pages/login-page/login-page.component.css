@@ -41,5 +41,12 @@ button[mat-button]:hover {
   background-color: #60a869;
 }
 
+.buttons-login-cancel {
+  display: flex;
+  flex-direction: column; /* Coloca los botones en columna */
+  gap: 8px; /* Espacio entre los botones */
+}
 
-
+.buttons-login-cancel button {
+  margin-top: 4px; /* Margen adicional opcional entre los botones */
+}
