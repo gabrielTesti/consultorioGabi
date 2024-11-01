@@ -43,10 +43,11 @@ button[mat-button]:hover {
 
 .buttons-login-cancel {
   display: flex;
-  flex-direction: column; /* Coloca los botones en columna */
-  gap: 8px; /* Espacio entre los botones */
+  flex-direction: column; 
+  gap: 8px; 
 }
 
 .buttons-login-cancel button {
-  margin-top: 4px; /* Margen adicional opcional entre los botones */
+  margin-top: 4px; 
 }
+
