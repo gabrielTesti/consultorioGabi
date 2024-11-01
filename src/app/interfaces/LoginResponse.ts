@@ -1,5 +1,6 @@
 export interface LoginResponse {
-    success: boolean;
-    token?: string;
-    message?: string;
-  }
+  codigo: number;
+  mensaje: string;
+  jwt?: string;
+  payload?: any;
+}
