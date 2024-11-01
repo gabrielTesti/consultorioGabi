@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog'; // Importa MatDialogRef
 import { LoginResponse } from '../../interfaces/LoginResponse';
 
 @Component({
@@ -12,7 +13,11 @@ export class LoginPageComponent {
   usuario: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private dialogRef: MatDialogRef<LoginPageComponent> // Inyecta MatDialogRef
+  ) { }
 
   login() {
     if (this.usuario && this.password) {
@@ -60,16 +65,16 @@ export class LoginPageComponent {
   redirigirSegunRol(rol: string) {
     switch (rol) {
       case 'administrador':
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/admin']).then(() => this.dialogRef.close());
         break;
       case 'medico':
-        this.router.navigate(['/medico']);
+        this.router.navigate(['/medico']).then(() => this.dialogRef.close());
         break;
       case 'operador':
-        this.router.navigate(['/operador']);
+        this.router.navigate(['/operador']).then(() => this.dialogRef.close());
         break;
       case 'paciente':
-        this.router.navigate(['/pacientes']);
+        this.router.navigate(['/pacientes']).then(() => this.dialogRef.close());
         break;
       default:
         console.error('Rol desconocido:', rol);
