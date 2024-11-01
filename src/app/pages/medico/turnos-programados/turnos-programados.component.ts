@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Turno } from 'src/app/interfaces/turno';
-import { TurnosSimuladosService } from 'src/app/services/turnos-simulados.service';
 
 @Component({
   selector: 'app-turnos-programados',
@@ -16,7 +15,7 @@ export class TurnosProgramadosComponent implements OnInit {
   notasTurno: string | null = null; // notas del turno seleccionado
 
 
-  constructor(private turnosSimuladosService: TurnosSimuladosService){}
+  constructor(){}
 
   ngOnInit(): void {
     this.cargarTurnos(); 
@@ -24,7 +23,7 @@ export class TurnosProgramadosComponent implements OnInit {
   }
 
   cargarTurnos() {
-    this.turnos = this.turnosSimuladosService.obtenerTurnosSimulados();
+   
   }
 
   filtrarTurnos() {
