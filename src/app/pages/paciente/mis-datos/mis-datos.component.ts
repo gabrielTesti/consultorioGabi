@@ -12,8 +12,8 @@ export class MisDatosComponent implements OnInit {
     nombre: 'Juan',
     apellido: 'Pérez',
     email: 'paciente@correo.com',
-    telefono: '1234567890',
-    dni: '12345678',
+    telefono: '3424090182',
+    dni: '45215162',
     fechaNacimiento: new Date(1990, 1, 1), // YYYY, MM-1, DD
     password: 'contraseña123'
   };

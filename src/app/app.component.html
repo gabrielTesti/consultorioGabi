@@ -1,17 +1,47 @@
 
-<!-- header welcome se muestra si el usuario no está logueado -->
-<app-header-welcome></app-header-welcome><!--  -->
 
+<!-- Header para usuarios no logueados -->
+<app-header-welcome *ngIf="!loggedIn"></app-header-welcome>
 
+<!-- Header para usuarios logueados -->
+<app-header-main *ngIf="loggedIn"></app-header-main>
 
-<!-- header main se muestra solo si el usuario está logueado -->
-
-
-<!-- contenedor para el contenido principal -->
+<!-- Contenedor para el contenido principal -->
 <div class="main-content">
-    <!-- contenido principal -->
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Footer -->
+<app-footer></app-footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<app-header-welcome></app-header-welcome>
+
+
+
+<div class="main-content">
+    
     <router-outlet></router-outlet>
 </div>
 
-<!-- footer -->
+
 <app-footer></app-footer>
+ -->

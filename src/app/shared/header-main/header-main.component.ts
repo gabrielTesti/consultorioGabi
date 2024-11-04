@@ -9,16 +9,17 @@ import { Router } from '@angular/router';
 })
 
 export class HeaderMainComponent {
-authService: any;
-  constructor(private router: Router) { }
+/* authService: any; */
+constructor(private router: Router) { }
 nombreUsuario: string = "";
-tipoUsuario: string = "Administrador";
+tipoUsuario: string = "Paciente";
 
 
 
 
 cerrarSesion(){
-/* this.router.navigate(["/welcome"]) */
+ this.router.navigate(["/welcome"])
 } 
+
 
 }

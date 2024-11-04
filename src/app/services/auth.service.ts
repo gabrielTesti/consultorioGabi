@@ -17,4 +17,26 @@ export class AuthService {
   login(usuario: string, password: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, { usuario, password });
   }
+
+
+
+
+
+
+
+  //simulacion sin backend para mostrar los headers 
+  loggedIn = false; // Esta variable controla si el usuario está logueado o no
+
+  loginSimulation() {
+    this.loggedIn = true;
+  }
+
+  logout() {
+    this.loggedIn = false;
+  }
+
+  isLoggedIn(): boolean {
+    return this.loggedIn;
+  }
+  
 }
