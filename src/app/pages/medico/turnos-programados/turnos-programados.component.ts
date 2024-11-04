@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Turno } from 'src/app/interfaces/turno';
+import { turnosSimulados } from 'src/app/interfaces/turnos-simulados';
 
 @Component({
   selector: 'app-turnos-programados',
@@ -23,7 +24,7 @@ export class TurnosProgramadosComponent implements OnInit {
   }
 
   cargarTurnos() {
-   
+    this.turnos = turnosSimulados;
   }
 
   filtrarTurnos() {
