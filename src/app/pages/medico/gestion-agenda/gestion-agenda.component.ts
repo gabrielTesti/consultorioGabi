@@ -26,8 +26,8 @@ export class GestionAgendaComponent implements OnInit {
   cargarHorarios(): void {
     // simulación de carga de horarios
     this.horarios = [
-      { fecha: '2024-10-15', rango: '15:00 - 17:00' },
-      { fecha: '2024-10-15', rango: '18:00 - 20:00' }
+      { fecha: '2024-11-05', rango: '15:00 - 17:00' },
+      { fecha: '2024-11-05', rango: '18:00 - 20:00' }
     ];
   }
 
