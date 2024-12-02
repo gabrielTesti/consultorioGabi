@@ -1,34 +1,41 @@
 <div>
-    <h2>Gestión de Agenda</h2>
-    
-    <!-- Date Picker para seleccionar la fecha -->
-    <label for="fecha">Selecciona la Fecha:</label>
-    <input type="date" [(ngModel)]="selectedDate" (change)="cargarHorarios()">
+  <h2>Gestión de Agenda</h2>
   
-    <h3>Horarios Disponibles para el {{ selectedDate | date: 'dd/MM/yyyy' }}</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Rango Horario</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let horario of obtenerHorariosPorFecha(selectedDate)">
-          <td>{{ horario.rango }}</td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <!-- Formulario para agregar nuevo horario -->
-    <h3>Agregar Nuevo Horario</h3>
-    <form [formGroup]="agendaForm" (ngSubmit)="agregarHorario()">
-      <label for="horaInicio">Hora de Inicio:</label>
-      <input type="time" formControlName="horaInicio" required>
-  
-      <label for="horaFin">Hora de Fin:</label>
-      <input type="time" formControlName="horaFin" required>
-  
+  <!-- Date Picker para seleccionar la fecha -->
+  <label for="fecha">Selecciona la Fecha:</label>
+  <input type="date" [(ngModel)]="selectedDate" (change)="cargarHorarios()">
+
+  <h3>Horarios Disponibles para el {{ selectedDate | date: 'dd/MM/yyyy' }}</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Rango Horario</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let horario of obtenerHorariosPorFecha(selectedDate)">
+        <td>{{ horario.rango }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Formulario para agregar nuevo horario -->
+  <h3>Agregar Nuevo Horario</h3>
+  <form [formGroup]="agendaForm" (ngSubmit)="agregarHorario()">
+    <label for="especialidad">Especialidad:</label>
+    <select formControlName="especialidad" required>
+      <option *ngFor="let especialidad of especialidades" [value]="especialidad.id">{{ especialidad.descripcion }}</option>
+    </select>
+
+    <label for="horaInicio">Hora de Inicio:</label>
+    <input type="time" formControlName="horaInicio" required>
+
+    <label for="horaFin">Hora de Fin:</label>
+    <input type="time" formControlName="horaFin" required>
+
+    <div class="button-group">
       <button type="submit">Agregar Nuevo Horario</button>
-    </form>
-  </div>
-  
+      <button type="button" (click)="volver()">Volver</button>
+    </div>
+  </form>
+</div>

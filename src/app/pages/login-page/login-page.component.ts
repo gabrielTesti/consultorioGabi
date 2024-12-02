@@ -34,7 +34,7 @@ export class LoginPageComponent {
             }
             if (response.payload && response.payload.length > 0) {
               const user = response.payload[0];
-              sessionStorage.setItem('datosUsuario', JSON.stringify(user));
+              localStorage.setItem('datosUsuario', JSON.stringify(user));
               if (user.rol) {
                 localStorage.setItem('rol', user.rol);
                 this.redirigirSegunRol(user.rol);

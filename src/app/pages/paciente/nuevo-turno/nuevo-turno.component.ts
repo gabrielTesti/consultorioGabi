@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Turno } from 'src/app/interfaces/turno';
 import { TurnoService } from 'src/app/services/turno.service';
+import { Turno } from 'src/app/interfaces/turno';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nuevo-turno',
@@ -10,24 +9,19 @@ import { TurnoService } from 'src/app/services/turno.service';
   styleUrls: ['./nuevo-turno.component.css']
 })
 export class NuevoTurnoComponent {
-
-  showModal: boolean = false;
-  turnos: Turno[] = []; // almacena los turnos creados
-
-  constructor(private router: Router, private turnoService: TurnoService) {}
-
   cobertura: string = '';
   especialidad: string = '';
   profesional: string = '';
   fecha: string = '';
   hora: string = '';
   notas: string = '';
+  showModal: boolean = false;
 
-  onSubmit(form: NgForm) {
+  constructor(private turnoService: TurnoService, private router: Router) { }
+
+  onSubmit(form: any) {
     if (form.valid) {
-      this.showModal = true;
-
-      const nuevoTurno: Turno = {
+      const turno: Turno = {
         cobertura: this.cobertura,
         especialidad: this.especialidad,
         profesional: this.profesional,
@@ -36,23 +30,32 @@ export class NuevoTurnoComponent {
         notas: this.notas
       };
 
-      this.turnoService.agregarTurno(nuevoTurno);
-    } else {
-      alert("Debes completar todos los campos para enviar el formulario");
+      this.turnoService.agregarTurno(turno).subscribe(
+        response => {
+          if (response.codigo === 200) {
+            this.showModal = true;
+          } else {
+            alert('Error al asignar el turno: ' + response.mensaje);
+          }
+        },
+        error => {
+          console.error('Error en la petición', error);
+          alert('Ocurrió un error al asignar el turno');
+        }
+      );
     }
   }
 
-
-  
   cancelar() {
     this.router.navigate(['/pacientes']);
   }
 
   closeModal() {
-    this.showModal = false; //cierra el modal
+    this.showModal = false;
+    this.router.navigate(['/pacientes']);
   }
 
   confirm() {
-    this.router.navigate(['/pacientes/mis-turnos']);
+    this.closeModal();
   }
 }

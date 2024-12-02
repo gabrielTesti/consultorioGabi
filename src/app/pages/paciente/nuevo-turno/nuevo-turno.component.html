@@ -1,68 +1,52 @@
 <form (ngSubmit)="onSubmit(turnoForm)" #turnoForm="ngForm">
-
     <div class="nuevo-turno">
-        <h2>Nuevo turno</h2>
-    
-        <div class="input-row">
-            <mat-form-field appearance="outline">
-                <mat-label>Cobertura</mat-label>
-                <input matInput [(ngModel)]="cobertura" name="cobertura"  required>
-            </mat-form-field>
-            
-            <mat-form-field appearance="outline">
-                <mat-label>Especialidad</mat-label>
-                <input matInput [(ngModel)]="especialidad" name="especialidad"  required>
-            </mat-form-field>
-            
-            <mat-form-field appearance="outline">
-                <mat-label>Profesional</mat-label>
-                <input matInput [(ngModel)]="profesional" name="profesional" required>
-            </mat-form-field>
-
-        
-
-            <mat-form-field appearance="outline">
-                <mat-label>Fecha</mat-label>
-                <input matInput [matDatepicker]="picker" [(ngModel)]="fecha" name="fecha" required>
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field> 
- 
-
-            <mat-form-field appearance="outline">
-                <mat-label>Hora</mat-label>
-                <input type="time" matInput [(ngModel)]="hora" name="hora" required>
-            </mat-form-field>
-        </div>
-
-        <mat-form-field appearance="outline" class="notas">
-            <mat-label>Notas</mat-label>
-            <textarea matInput [(ngModel)]="notas" name="notas" required></textarea>
+      <h2>Nuevo turno</h2>
+      
+      <div class="input-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Cobertura</mat-label>
+          <input matInput [(ngModel)]="cobertura" name="cobertura" required>
         </mat-form-field>
-
-        <div class="buttons">
-            <button mat-button type="button" (click)="cancelar()">Cancelar</button>
-            <button mat-raised-button color="primary" type="submit" [disabled]="turnoForm.invalid">Aceptar</button>
-        </div>
         
+        <mat-form-field appearance="outline">
+          <mat-label>Especialidad</mat-label>
+          <input matInput [(ngModel)]="especialidad" name="especialidad" required>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Profesional</mat-label>
+          <input matInput [(ngModel)]="profesional" name="profesional" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="fecha" name="fecha" required>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> 
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Hora</mat-label>
+          <input type="time" matInput [(ngModel)]="hora" name="hora" required>
+        </mat-form-field>
+      </div>
+  
+      <mat-form-field appearance="outline" class="notas">
+        <mat-label>Notas</mat-label>
+        <textarea matInput [(ngModel)]="notas" name="notas" required></textarea>
+      </mat-form-field>
+  
+      <div class="buttons">
+        <button mat-button type="button" (click)="cancelar()">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="turnoForm.invalid">Aceptar</button>
+      </div>
     </div>
-
-</form>
-
-
-
-
-
-
-<div class="modal" *ngIf="showModal">
+  </form>
+  
+  <div class="modal" *ngIf="showModal">
     <div class="modal-content">
       <span class="close" (click)="closeModal()">&times;</span> 
-      <p>Turno confirmado con {{ profesional }}, el día {{ fecha | date}} a las {{ hora }}</p>
+      <p>Turno confirmado con {{ profesional }}, el día {{ fecha | date }} a las {{ hora }}</p>
       <button (click)="confirm()">Aceptar</button>
     </div>
   </div>
-  
-
-
-
- 

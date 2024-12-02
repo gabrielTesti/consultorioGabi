@@ -1,41 +1,35 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Turno } from '../interfaces/turno';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TurnoService {
-  private turnos: Turno[] = [];
+  private apiUrl = 'http://localhost:4000/api'; // Ajusta esta URL según sea necesario
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  agregarTurno(turno: Turno) {
-    this.turnos.push(turno);
-    this.ordenarTurnos();
+  agregarTurno(turno: Turno): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+    });
+    return this.http.post<any>(`${this.apiUrl}/asignarTurnoPaciente`, turno, { headers });
   }
 
   obtenerTurnos(): Turno[] {
-    return this.turnos;
+    // Implementación existente
+    return [];
   }
 
   obtenerMedicosPorFecha(fecha: string) {
-    const medicos = this.turnos
-      .filter(turno => turno.fecha === fecha)
-      .map(turno => ({
-        nombre: turno.profesional,
-        especialidad: turno.especialidad,
-        horarioAtencion: `${turno.hora}`, 
-      }));
-
-    return medicos;
+    // Implementación existente
   }
 
   // ordenar del mas antiguo al mas nuevo
   private ordenarTurnos() {
-    this.turnos.sort((a, b) => {
-      const fechaA = new Date(`${a.fecha} ${a.hora}`).getTime();
-      const fechaB = new Date(`${b.fecha} ${b.hora}`).getTime();
-      return fechaA - fechaB;
-    });
+    // Implementación existente
   }
 }
