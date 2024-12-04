@@ -1,0 +1,45 @@
+/* Container for the dialog */
+.mat-dialog-container {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Title of the dialog */
+  .mat-dialog-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3f51b5;
+    margin-bottom: 10px;
+  }
+  
+  /* Content of the dialog */
+  .mat-dialog-content {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Actions of the dialog */
+  .mat-dialog-actions {
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    align-items: center; /* Center the button vertically */
+    width: 100%; /* Ensure the actions take full width */
+  }
+  
+  /* Button styles */
+  .close-button {
+    background-color: #f44336; /* Red color */
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .close-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+  }

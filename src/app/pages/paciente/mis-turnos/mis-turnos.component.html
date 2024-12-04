@@ -1,22 +1,18 @@
-<div class="mis-turnos">
-    <h2>Mis Turnos</h2>
-    <mat-accordion>
-        <mat-expansion-panel *ngFor="let turno of turnos">
-            <mat-expansion-panel-header>
-                    <mat-panel-title>
-                    {{ turno.fecha | date: 'dd/MM/yyyy'}} a las {{ turno.hora }}
-                    </mat-panel-title>
-                    <mat-panel-description>
-                    Haz click para ver detalles
-                    </mat-panel-description>
-            </mat-expansion-panel-header>
+<mat-accordion>
+    <div *ngIf="turnos.length === 0">No hay turnos disponibles</div>
+    <mat-expansion-panel *ngFor="let turno of turnos">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{ turno.fecha | date: 'fullDate' }} a las {{ turno.hora }}
+            </mat-panel-title>
+            <mat-panel-description>
+                Haz click para ver detalles
+            </mat-panel-description>
+        </mat-expansion-panel-header>
 
-            <div>
-            <p><strong>Especialista:</strong> {{ turno.profesional }}</p>
+        <div>
+            <p><strong>Especialista:</strong> {{ turno.nombre_medico }} {{ turno.apellido_medico }}</p>
             <p><strong>Especialidad:</strong> {{ turno.especialidad }}</p>
-            </div>
-            
-        </mat-expansion-panel>
-    </mat-accordion>
-</div>
-  
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

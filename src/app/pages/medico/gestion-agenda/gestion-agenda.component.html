@@ -2,40 +2,47 @@
   <h2>Gestión de Agenda</h2>
   
   <!-- Date Picker para seleccionar la fecha -->
-  <label for="fecha">Selecciona la Fecha:</label>
-  <input type="date" [(ngModel)]="selectedDate" (change)="cargarHorarios()">
+  <mat-form-field appearance="fill">
+    <mat-label>Selecciona la Fecha</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" (dateChange)="cargarHorarios()">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 
   <h3>Horarios Disponibles para el {{ selectedDate | date: 'dd/MM/yyyy' }}</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Rango Horario</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let horario of obtenerHorariosPorFecha(selectedDate)">
-        <td>{{ horario.rango }}</td>
-      </tr>
-    </tbody>
+  <table mat-table [dataSource]="obtenerHorariosPorFecha(selectedDate)" class="mat-elevation-z8">
+    <ng-container matColumnDef="rango">
+      <th mat-header-cell *matHeaderCellDef> Rango Horario </th>
+      <td mat-cell *matCellDef="let horario"> {{ horario.rango }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['rango']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['rango'];"></tr>
   </table>
 
   <!-- Formulario para agregar nuevo horario -->
   <h3>Agregar Nuevo Horario</h3>
   <form [formGroup]="agendaForm" (ngSubmit)="agregarHorario()">
-    <label for="especialidad">Especialidad:</label>
-    <select formControlName="especialidad" required>
-      <option *ngFor="let especialidad of especialidades" [value]="especialidad.id">{{ especialidad.descripcion }}</option>
-    </select>
+    <mat-form-field appearance="fill">
+      <mat-label>Especialidad</mat-label>
+      <mat-select formControlName="especialidad" required>
+        <mat-option *ngFor="let especialidad of especialidades" [value]="especialidad.id">{{ especialidad.descripcion }}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-    <label for="horaInicio">Hora de Inicio:</label>
-    <input type="time" formControlName="horaInicio" required>
+    <mat-form-field appearance="fill">
+      <mat-label>Hora de Inicio</mat-label>
+      <input matInput type="time" formControlName="horaInicio" required>
+    </mat-form-field>
 
-    <label for="horaFin">Hora de Fin:</label>
-    <input type="time" formControlName="horaFin" required>
+    <mat-form-field appearance="fill">
+      <mat-label>Hora de Fin</mat-label>
+      <input matInput type="time" formControlName="horaFin" required>
+    </mat-form-field>
 
     <div class="button-group">
-      <button type="submit">Agregar Nuevo Horario</button>
-      <button type="button" (click)="volver()">Volver</button>
+      <button mat-raised-button color="primary" type="submit">Agregar Nuevo Horario</button>
+      <button mat-button type="button" (click)="volver()">Volver</button>
     </div>
   </form>
 </div>

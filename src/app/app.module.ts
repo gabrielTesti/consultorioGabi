@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
+import { MatSelectModule } from '@angular/material/select';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,6 +37,8 @@ import { TurnosProgramadosOperadorComponent } from './pages/operador/turnos-prog
 import { RegistrarPacientesComponent } from './pages/operador/registrar-pacientes/registrar-pacientes.component';
 import { EditarAgendaModalComponent } from './pages/operador/editar-agenda-modal/editar-agenda-modal.component';
 import { TurnosDialogComponent } from './pages/operador/turnos-dialog/turnos-dialog.component';
+import { TurnoNotasDialogComponent } from './pages/medico/turnos-programados/turno-notas-dialog/turno-notas-dialog.component';
+import { TurnoConfirmadoDialogComponent } from './pages/paciente/nuevo-turno/turno-confirmado-dialog/turno-confirmado-dialog.component';
 
 
 
@@ -64,7 +66,9 @@ import { TurnosDialogComponent } from './pages/operador/turnos-dialog/turnos-dia
     TurnosProgramadosOperadorComponent,
     RegistrarPacientesComponent,
     EditarAgendaModalComponent,
-    TurnosDialogComponent
+    TurnosDialogComponent,
+    TurnoNotasDialogComponent,
+    TurnoConfirmadoDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +86,8 @@ import { TurnosDialogComponent } from './pages/operador/turnos-dialog/turnos-dia
     ReactiveFormsModule,
     MatCardModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
 
    
 

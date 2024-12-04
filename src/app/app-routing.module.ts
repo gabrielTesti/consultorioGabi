@@ -14,20 +14,19 @@ import { TurnosProgramadosOperadorComponent } from './pages/operador/turnos-prog
 import { RegistrarPacientesComponent } from './pages/operador/registrar-pacientes/registrar-pacientes.component';
 
 const routes: Routes = [
-  {path: "welcome", component: WelcomePageComponent },
-  {path: "", redirectTo: 'welcome', pathMatch: 'full' },
-  {path: "pacientes", component: PacienteComponent},
-  { path: "pacientes/nuevo-turno", component: NuevoTurnoComponent },
-  { path: "pacientes/mis-turnos", component: MisTurnosComponent },
-  { path: "pacientes/mis-datos", component: MisDatosComponent },
-  {path: "admin", component: AdminComponent},
-  {path: "medico", component: MedicoComponent},
-  {path: "medico/turnos-programados", component: TurnosProgramadosComponent},
-  {path: "medico/gestion-agenda", component: GestionAgendaComponent},
-  {path: "operador", component: OperadorComponent},
-  {path: "operador/turnos-programados-operador", component: TurnosProgramadosOperadorComponent},
-  {path: "operador/registrar-pacientes", component: RegistrarPacientesComponent}
- 
+  { path: 'welcome', component: WelcomePageComponent },
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+  { path: 'pacientes', component: PacienteComponent },
+  { path: 'pacientes/nuevo-turno', component: NuevoTurnoComponent },
+  { path: 'pacientes/mis-turnos', component: MisTurnosComponent },
+  { path: 'pacientes/mis-datos', component: MisDatosComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'medico', component: MedicoComponent },
+  { path: 'medico/turnos-programados', component: TurnosProgramadosComponent },
+  { path: 'medico/gestion-agenda', component: GestionAgendaComponent },
+  { path: 'operador', component: OperadorComponent },
+  { path: 'operador/turnos-programados-operador', component: TurnosProgramadosOperadorComponent },
+  { path: 'operador/registrar-pacientes', component: RegistrarPacientesComponent }
 ];
 
 @NgModule({

@@ -14,9 +14,48 @@ export class TurnoService {
   agregarTurno(turno: Turno): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     });
     return this.http.post<any>(`${this.apiUrl}/asignarTurnoPaciente`, turno, { headers });
+  }
+
+  obtenerAgenda(id_medico: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.get<any>(`${this.apiUrl}/obtenerAgenda/${id_medico}`, { headers });
+  }
+
+
+  obtenerTurnosPaciente(id: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.get<any>(`${this.apiUrl}/obtenerTurnoPaciente/${id}`, { headers });
+  }
+
+  obtenerTurnosMedico(id_medico: number, fecha: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.post<any>(`${this.apiUrl}/obtenerTurnosMedico`, { id_medico, fecha }, { headers });
+  }
+
+  actualizarTurno(id: number, turno: Turno): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.put<any>(`${this.apiUrl}/actualizarTurnoPaciente/${id}`, turno, { headers });
+  }
+
+  eliminarTurno(id: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.delete<any>(`${this.apiUrl}/eliminarTurnoPaciente/${id}`, { headers });
   }
 
   obtenerTurnos(): Turno[] {

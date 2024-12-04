@@ -1,8 +1,8 @@
 export interface Turno {
-    cobertura: string;
-    especialidad: string;
-    profesional: string;
+    id_cobertura: number;
+    id_agenda: number;
+    id_paciente: number;
     fecha: string;
     hora: string;
-    notas: string;
+    nota: string;
 }

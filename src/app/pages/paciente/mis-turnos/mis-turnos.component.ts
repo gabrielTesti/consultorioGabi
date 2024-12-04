@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Turno } from 'src/app/interfaces/turno';
-import { TurnoService } from 'src/app/services/turno.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-mis-turnos',
@@ -8,11 +7,37 @@ import { TurnoService } from 'src/app/services/turno.service';
   styleUrls: ['./mis-turnos.component.css']
 })
 export class MisTurnosComponent implements OnInit {
-  turnos: Turno[] = [];
+  turnos: any[] = [];
 
-  constructor(private turnoService: TurnoService) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.turnos = this.turnoService.obtenerTurnos();
+    this.obtenerTurnos();
+  }
+
+  obtenerTurnos(): void {
+    const idPaciente = 2; // Reemplaza con el ID del paciente correspondiente
+    const token = localStorage.getItem('token'); // Obtén el token desde el almacenamiento local
+
+    if (!token) {
+      console.error('Token no proporcionado');
+      return;
+    }
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    this.http.get(`http://localhost:4000/api/obtenerTurnoPaciente/${idPaciente}`, { headers })
+      .subscribe((response: any) => {
+        console.log(response); // Agrega este console.log para verificar la respuesta
+        if (response.codigo === 200) {
+          this.turnos = response.payload.sort((a: any, b: any) => {
+            const dateA = new Date(a.fecha + 'T' + a.hora);
+            const dateB = new Date(b.fecha + 'T' + b.hora);
+            return dateA.getTime() - dateB.getTime();
+          });
+        } else {
+          console.error(response.mensaje);
+        }
+      });
   }
 }

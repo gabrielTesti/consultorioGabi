@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EspecialidadService {
-  private apiUrl = 'http://localhost:4000/api'; // Ajusta esta URL según sea necesario
+  private apiUrl = 'http://localhost:4000/api'; // Adjust this URL as needed
 
   constructor(private http: HttpClient) { }
 
@@ -16,5 +16,21 @@ export class EspecialidadService {
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     });
     return this.http.get<any>(`${this.apiUrl}/obtenerEspecialidades`, { headers });
+  }
+
+  obtenerCoberturas(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.get<any>(`${this.apiUrl}/obtenerCoberturas`, { headers });
+  }
+
+  obtenerMedicoPorEspecialidad(id_especialidad: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.get<any>(`${this.apiUrl}/obtenerMedicoPorEspecialidad/${id_especialidad}`, { headers });
   }
 }
