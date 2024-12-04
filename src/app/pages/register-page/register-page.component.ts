@@ -1,4 +1,4 @@
-/* import { Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/interfaces/usuario';
 
@@ -42,61 +42,11 @@ export class RegisterPageComponent {
   }
 }
 
- */
+ 
 
 
 
 
 
-import { Component } from '@angular/core';
-import { UsuarioService } from 'src/app/services/usuario.service';
-import { Usuario } from 'src/app/interfaces/usuario';
-import { MatDialogRef } from '@angular/material/dialog';  
-
-@Component({
-  selector: 'app-register-page',
-  templateUrl: './register-page.component.html',
-  styleUrls: ['./register-page.component.css']
-})
-export class RegisterPageComponent {
-  usuario: Usuario = {
-    dni: '',
-    apellido: '',
-    nombre: '',
-    fecha_nacimiento: new Date(),
-    password: '',
-    rol: 'paciente',  // O el rol que desees por defecto
-    email: '',
-    telefono: ''
-  };
-
-  confirmPassword: string = "";
-
-  constructor(
-    private usuarioService: UsuarioService,
-    public dialogRef: MatDialogRef<RegisterPageComponent>  // Para manejar el cierre del modal
-  ) {}
-
-  registrarUsuario(): void {
-    // Validación de contraseñas
-    if (this.usuario.password !== this.confirmPassword) {
-      console.error('Las contraseñas no coinciden');
-      return;
-    }
-
-    // Llamada al servicio para registrar el usuario
-    this.usuarioService.crearUsuario(this.usuario).subscribe({
-      next: (response) => {
-        console.log('Usuario registrado exitosamente:', response);
-        this.dialogRef.close();  // Cerramos el modal si el registro fue exitoso
-        // Puedes agregar alguna lógica para redirigir o mostrar un mensaje de éxito
-      },
-      error: (err) => {
-        console.error('Error al registrar el usuario:', err);
-        // Mostrar un mensaje de error al usuario
-      }
-    });
-  }
-}
 
 
