@@ -52,7 +52,7 @@
  -->
 
 
- <h2>Registrar paciente</h2>
+ <!-- <h2>Registrar paciente</h2>
 <form #pacienteForm="ngForm" (ngSubmit)="registrarPaciente(pacienteForm)">
   <div class="name-fields">
     <mat-form-field appearance="outline">
@@ -101,5 +101,63 @@
   <div class="buttons">
     <button mat-button type="button" (click)="resetFormulario()">Cancelar</button>
     <button mat-raised-button color="primary" type="submit" [disabled]="pacienteForm.invalid">Registrar paciente</button>
+  </div>
+</form>
+ -->
+
+
+
+
+
+
+ <h2>Registrar paciente</h2>
+<form [formGroup]="registroPacienteForm" (ngSubmit)="registrarPaciente()">
+  <div class="name-fields">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="apellido" required />
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Correo electrónico</mat-label>
+    <input matInput type="email" formControlName="email" required />
+  </mat-form-field>
+
+  <div class="password-fields">
+    <mat-form-field appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" formControlName="password" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Confirmar contraseña</mat-label>
+      <input matInput type="password" formControlName="confirmPassword" required />
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="outline">
+    <mat-label>DNI</mat-label>
+    <input matInput type="number" formControlName="dni" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Fecha de nacimiento</mat-label>
+    <input matInput type="date" formControlName="fecha_nacimiento" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Teléfono de contacto</mat-label>
+    <input matInput type="tel" formControlName="telefono" />
+  </mat-form-field>
+
+  <div class="buttons">
+    <button mat-button type="button" (click)="resetFormulario()">Cancelar</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="registroPacienteForm.invalid || isSubmitting">Registrar paciente</button>
   </div>
 </form>
