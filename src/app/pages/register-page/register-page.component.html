@@ -1,63 +1,76 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <h2>Registrarse</h2>
 <form [formGroup]="registroForm" (ngSubmit)="registrarUsuario()">
-  <div class="name-fields">
-    <mat-form-field appearance="outline">
-      <mat-label>Nombre</mat-label>
-      <input matInput formControlName="nombre" required />
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Apellido</mat-label>
-      <input matInput formControlName="apellido" required />
-    </mat-form-field>
-  </div>
+  <!-- Nombre -->
   <mat-form-field appearance="outline">
-    <mat-label>Correo electrónico</mat-label>
-    <input matInput type="email" formControlName="email" required />
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre" required />
+    <mat-error *ngIf="registroForm.get('nombre')?.hasError('required') && registroForm.get('nombre')?.touched">El nombre es obligatorio.</mat-error>
   </mat-form-field>
-  <div class="password-fields">
-    <mat-form-field appearance="outline">
-      <mat-label>Contraseña</mat-label>
-      <input matInput type="password" formControlName="password" required />
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Confirmar contraseña</mat-label>
-      <input matInput type="password" formControlName="confirmPassword" required />
-    </mat-form-field>
-  </div>
+
+  <!-- Apellido -->
+  <mat-form-field appearance="outline">
+    <mat-label>Apellido</mat-label>
+    <input matInput formControlName="apellido" required />
+    <mat-error *ngIf="registroForm.get('apellido')?.hasError('required') && registroForm.get('apellido')?.touched">El apellido es obligatorio.</mat-error>
+  </mat-form-field>
+
+  <!-- Email -->
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" required />
+    <mat-error *ngIf="registroForm.get('email')?.hasError('required') && registroForm.get('email')?.touched">El email es obligatorio.</mat-error>
+    <mat-error *ngIf="registroForm.get('email')?.hasError('email') && registroForm.get('email')?.touched">Ingrese un email válido.</mat-error>
+  </mat-form-field>
+
+  <!-- Contraseña -->
+  <mat-form-field appearance="outline">
+    <mat-label>Contraseña</mat-label>
+    <input matInput formControlName="password" type="password" required />
+    <mat-error *ngIf="registroForm.get('password')?.hasError('required') && registroForm.get('password')?.touched">La contraseña es obligatoria.</mat-error>
+  </mat-form-field>
+
+  <!-- Confirmar Contraseña -->
+  <mat-form-field appearance="outline">
+    <mat-label>Confirmar Contraseña</mat-label>
+    <input matInput formControlName="confirmPassword" type="password" required />
+    <mat-error *ngIf="registroForm.get('confirmPassword')?.hasError('required') && registroForm.get('confirmPassword')?.touched">La confirmación de contraseña es obligatoria.</mat-error>
+    <mat-error *ngIf="registroForm.value.password !== registroForm.value.confirmPassword && registroForm.get('confirmPassword')?.touched">Las contraseñas no coinciden.</mat-error>
+  </mat-form-field>
+
+  <!-- DNI -->
   <mat-form-field appearance="outline">
     <mat-label>DNI</mat-label>
-    <input matInput type="number" formControlName="dni" required />
+    <input matInput formControlName="dni" required />
+    <mat-error *ngIf="registroForm.get('dni')?.hasError('required') && registroForm.get('dni')?.touched">El DNI es obligatorio.</mat-error>
   </mat-form-field>
+
+  <!-- Fecha de Nacimiento -->
   <mat-form-field appearance="outline">
-    <mat-label>Fecha de nacimiento</mat-label>
-    <input matInput type="date" formControlName="fecha_nacimiento" required />
+    <mat-label>Fecha de Nacimiento</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="fecha_nacimiento" required />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="registroForm.get('fecha_nacimiento')?.hasError('required') && registroForm.get('fecha_nacimiento')?.touched">La fecha de nacimiento es obligatoria.</mat-error>
   </mat-form-field>
+
+  <!-- Teléfono -->
   <mat-form-field appearance="outline">
-    <mat-label>Teléfono de contacto</mat-label>
-    <input matInput type="tel" formControlName="telefono" />
+    <mat-label>Teléfono</mat-label>
+    <input matInput formControlName="telefono" />
   </mat-form-field>
-  <div class="buttons">
-    <button mat-button type="button" mat-dialog-close>Cancelar</button>
-    <!-- Botón Registrarse, deshabilitado mientras el formulario se esté enviando -->
-    <button mat-raised-button color="primary" type="submit" [disabled]="!registroForm.valid || isSubmitting">Registrarse</button>
+
+  <!-- Cobertura -->
+  <mat-form-field appearance="outline">
+    <mat-label>Cobertura</mat-label>
+    <mat-select formControlName="cobertura" required>
+      <mat-option *ngFor="let cobertura of coberturas" [value]="cobertura.id">
+        {{ cobertura.nombre }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="registroForm.get('cobertura')?.hasError('required') && registroForm.get('cobertura')?.touched">La cobertura es obligatoria.</mat-error>
+  </mat-form-field>
+
+  <!-- Botón de Enviar -->
+  <div class="button-container">
+    <button mat-raised-button color="primary" type="submit" [disabled]="isSubmitting">Registrar</button>
   </div>
 </form>

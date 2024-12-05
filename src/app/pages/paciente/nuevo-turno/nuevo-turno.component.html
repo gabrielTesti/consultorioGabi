@@ -1,9 +1,9 @@
-<form (ngSubmit)="onSubmit(turnoForm)" #turnoForm="ngForm">
+<!-- <form (ngSubmit)="onSubmit(turnoForm)" #turnoForm="ngForm">
   <div class="nuevo-turno">
     <h2>Nuevo turno</h2>
     
     <div class="input-row">
-      <mat-form-field appearance="outline">
+     <mat-form-field appearance="outline">
         <mat-label>Cobertura</mat-label>
         <mat-select [(ngModel)]="cobertura" name="cobertura" required>
           <mat-option *ngFor="let cobertura of coberturas" [value]="cobertura.id">
@@ -11,6 +11,8 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+
+      
       
       <mat-form-field appearance="outline">
         <mat-label>Especialidad</mat-label>
@@ -59,6 +61,90 @@
   </div>
 </form>
 
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span> 
+    <p>Turno confirmado con {{ profesionalNombre }}, el día {{ fecha | date }} a las {{ hora }}</p>
+    <button (click)="confirm()">Aceptar</button>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+<form (ngSubmit)="onSubmit(turnoForm)" #turnoForm="ngForm">
+  <div class="nuevo-turno">
+    <h2>Nuevo turno</h2>
+    
+    <div class="input-row">
+      <!-- Cobertura -->
+      <mat-form-field appearance="outline">
+        <mat-label>Cobertura</mat-label>
+        <mat-select [(ngModel)]="cobertura" name="cobertura" required *ngIf="coberturas.length > 0">
+          <mat-option *ngFor="let cobertura of coberturas" [value]="cobertura.id">
+            {{ cobertura.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Especialidad -->
+      <mat-form-field appearance="outline">
+        <mat-label>Especialidad</mat-label>
+        <mat-select [(ngModel)]="especialidad" name="especialidad" required (selectionChange)="onEspecialidadChange()" [disabled]="!cobertura">
+          <mat-option *ngFor="let especialidad of especialidades" [value]="especialidad.id">
+            {{ especialidad.descripcion }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <!-- Profesional -->
+      <mat-form-field appearance="outline">
+        <mat-label>Profesional</mat-label>
+        <mat-select [(ngModel)]="profesional" name="profesional" required [disabled]="!especialidad">
+          <mat-option *ngFor="let profesional of profesionales" [value]="profesional.id_medico">
+            {{ profesional.nombre }} {{ profesional.apellido }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Fecha -->
+      <mat-form-field appearance="outline">
+        <mat-label>Fecha</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="fecha" name="fecha" required (dateChange)="onFechaChange()" [disabled]="!profesional">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field> 
+
+      <!-- Hora -->
+      <mat-form-field appearance="outline">
+        <mat-label>Hora</mat-label>
+        <mat-select [(ngModel)]="hora" name="hora" required [disabled]="!fecha">
+          <mat-option *ngFor="let hora of horariosDisponibles" [value]="hora">
+            {{ hora }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Notas -->
+    <mat-form-field appearance="outline" class="notas">
+      <mat-label>Notas</mat-label>
+      <textarea matInput [(ngModel)]="notas" name="notas" required></textarea>
+    </mat-form-field>
+
+    <!-- Botones -->
+    <div class="buttons">
+      <button mat-button type="button" (click)="cancelar()" class="cancel-button">Cancelar</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="turnoForm.invalid" class="accept-button">Aceptar</button>
+    </div>
+  </div>
+</form>
+
+<!-- Modal de Confirmación -->
 <div class="modal" *ngIf="showModal">
   <div class="modal-content">
     <span class="close" (click)="closeModal()">&times;</span> 

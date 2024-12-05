@@ -33,4 +33,15 @@ export class EspecialidadService {
     });
     return this.http.get<any>(`${this.apiUrl}/obtenerMedicoPorEspecialidad/${id_especialidad}`, { headers });
   }
-}
+} 
+
+
+
+
+
+
+
+
+
+
+
