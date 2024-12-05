@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mis-turnos',
@@ -9,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class MisTurnosComponent implements OnInit {
   turnos: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.obtenerTurnos();
@@ -39,5 +40,9 @@ export class MisTurnosComponent implements OnInit {
           console.error(response.mensaje);
         }
       });
+  }
+
+  volver(): void {
+    this.router.navigate(['/pacientes']);
   }
 }
