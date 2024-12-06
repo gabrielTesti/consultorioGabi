@@ -26,13 +26,38 @@ export class EspecialidadService {
     return this.http.get<any>(`${this.apiUrl}/obtenerCoberturas`, { headers });
   }
 
-  obtenerMedicoPorEspecialidad(id_especialidad: number): Observable<any> {
+ obtenerMedicoPorEspecialidad(id_especialidad: number): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     });
     return this.http.get<any>(`${this.apiUrl}/obtenerMedicoPorEspecialidad/${id_especialidad}`, { headers });
   }
+
+ 
+
+
+
+  
+
+  obtenerEspecialidadesMedico(id_medico: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.get<any>(`${this.apiUrl}/obtenerEspecialidadesMedico/${id_medico}`, { headers });
+  }
+
+  crearMedicoEspecialidad(id_medico: number, id_especialidad: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+
+    const body = { id_medico, id_especialidad };
+    return this.http.post<any>(`${this.apiUrl}/crearMedicoEspecialidad`, body, { headers });
+  }
+  
 } 
 
 
