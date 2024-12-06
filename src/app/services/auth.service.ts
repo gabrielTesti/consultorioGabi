@@ -38,4 +38,27 @@ export class AuthService {
   private hasToken(): boolean {
     return !!localStorage.getItem('token');
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  getDatosUsuario(): any {
+    const datosUsuario = localStorage.getItem('datosUsuario');
+    return datosUsuario ? JSON.parse(datosUsuario) : null;
+  }
+  
 }

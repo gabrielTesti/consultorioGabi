@@ -1,10 +1,207 @@
-/* import { Component, OnInit } from '@angular/core';
+/* 
+
+  import { Component, OnInit } from '@angular/core';
+  import { TurnoService } from 'src/app/services/turno.service';
+  import { EspecialidadService } from 'src/app/services/especialidad.service';
+  import { Router } from '@angular/router';
+  import { MatDialog } from '@angular/material/dialog';
+  import { TurnoConfirmadoDialogComponent } from './turno-confirmado-dialog/turno-confirmado-dialog.component';
+  import { Turno } from 'src/app/interfaces/turno';
+  
+  @Component({
+    selector: 'app-nuevo-turno',
+    templateUrl: './nuevo-turno.component.html',
+    styleUrls: ['./nuevo-turno.component.css']
+  })
+  export class NuevoTurnoComponent implements OnInit {
+    cobertura: number = 0;  
+    especialidad: number = 0;
+    profesional: number = 0;
+    fecha: string = '';
+    hora: string = '';
+    notas: string = '';
+    showModal: boolean = false;
+    coberturas: any[] = [];
+    especialidades: any[] = [];
+    profesionales: any[] = [];
+    horariosDisponibles: string[] = [];
+    profesionalNombre: string = '';
+    id_agenda: number = 0; 
+    id_paciente: number = 0; 
+  
+    constructor(
+      private turnoService: TurnoService,
+      private especialidadService: EspecialidadService,
+      private router: Router,
+      public dialog: MatDialog
+    ) { }
+  
+   
+
+      ngOnInit(): void {
+        this.cargarCoberturas(); 
+        this.cargarEspecialidades(); 
+        this.obtenerIdPaciente(); 
+        this.cargarCoberturaUsuario(); 
+      
+        
+        const coberturaSeleccionada = localStorage.getItem('cobertura');
+        if (coberturaSeleccionada) {
+          this.cobertura = Number(coberturaSeleccionada);
+        }
+      }
+      
+  
+    
+    obtenerIdPaciente() {
+      const datosUsuario = JSON.parse(localStorage.getItem('datosUsuario') || '{}');
+      this.id_paciente = datosUsuario.id ||  parseInt(localStorage.getItem('cobertura') || '0', 10); 
+      console.log('Cobertura cargada desde localStorage:', this.cobertura);
+    }
+  
+   
+    cargarCoberturaUsuario() {
+      const datosUsuario = JSON.parse(localStorage.getItem('datosUsuario') || '{}');
+      this.cobertura = datosUsuario.id_cobertura || 0;  
+    }
+  
+    
+    cargarCoberturas() {
+      this.especialidadService.obtenerCoberturas().subscribe(response => {
+        if (response.codigo === 200 && Array.isArray(response.payload)) {
+          this.coberturas = response.payload[0];  
+        } else {
+          console.error('Error al cargar coberturas:', response.mensaje);
+        }
+      });
+    }
+  
+    
+ 
+
+
+      cargarEspecialidades() {
+        this.especialidadService.obtenerEspecialidades().subscribe(response => {
+          console.log(response);  
+          if (response.codigo === 200) {
+            this.especialidades = response.payload[0];  
+            console.log(this.especialidades);  
+          } else {
+            console.error(response.mensaje);
+          }
+        });
+      }
+      
+      
+      
+
+
+
+
+
+
+
+  
+   
+    onEspecialidadChange() {
+      const id_especialidad = this.especialidad;
+      this.especialidadService.obtenerMedicoPorEspecialidad(id_especialidad).subscribe(response => {
+        if (response.codigo === 200 && Array.isArray(response.payload)) {
+          this.profesionales = response.payload;
+        } else {
+          console.error(response.mensaje);
+        }
+      });
+    }
+  
+    
+    onFechaChange() {
+      const id_medico = this.profesional;
+      const fechaSeleccionada = new Date(this.fecha).toISOString().split('T')[0];  // Formato de fecha YYYY-MM-DD
+      this.turnoService.obtenerAgenda(id_medico).subscribe(response => {
+        if (response.codigo === 200 && Array.isArray(response.payload)) {
+          this.horariosDisponibles = response.payload
+            .filter((agenda: any) => new Date(agenda.fecha).toISOString().split('T')[0] === fechaSeleccionada)
+            .map((agenda: any) => agenda.hora_entrada);
+        } else {
+          console.error(response.mensaje);
+        }
+      });
+    }
+  
+    
+    onSubmit(form: any) {
+      if (form.valid) {
+        const turno: Turno = {
+          nota: this.notas,
+          id_agenda: this.id_agenda,
+          fecha: this.fecha,
+          hora: this.hora,
+          id_paciente: this.id_paciente,
+          id_cobertura: this.cobertura  
+        };
+  
+        this.turnoService.agregarTurno(turno).subscribe(
+          response => {
+            if (response.codigo === 200) {
+              this.profesionalNombre = this.profesionales.find(p => p.id_medico === this.profesional)?.nombre || '';
+              this.openDialog();
+            } else {
+              alert('Error al asignar el turno: ' + response.mensaje);
+            }
+          },
+          error => {
+            console.error('Error en la petición', error);
+            alert('Ocurrió un error al asignar el turno');
+          }
+        );
+      }
+    }
+  
+    
+    openDialog(): void {
+      const dialogRef = this.dialog.open(TurnoConfirmadoDialogComponent, {
+        data: {
+          profesionalNombre: this.profesionalNombre,
+          fecha: this.fecha,
+          hora: this.hora
+        }
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        this.router.navigate(['/pacientes']);
+      });
+    }
+  
+   
+    cancelar() {
+      this.router.navigate(['/pacientes']);
+    }
+  
+    
+    closeModal() {
+      this.showModal = false;
+      this.router.navigate(['/pacientes']);
+    }
+  
+    
+    confirm() {
+      this.closeModal();
+      this.router.navigate(['/pacientes']);
+    }
+  }
+   */
+
+
+
+  import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { TurnoService } from 'src/app/services/turno.service';
 import { EspecialidadService } from 'src/app/services/especialidad.service';
 import { Router } from '@angular/router';
-import { Turno } from 'src/app/interfaces/turno';
 import { MatDialog } from '@angular/material/dialog';
 import { TurnoConfirmadoDialogComponent } from './turno-confirmado-dialog/turno-confirmado-dialog.component';
+import { Turno } from 'src/app/interfaces/turno';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-nuevo-turno',
@@ -12,7 +209,7 @@ import { TurnoConfirmadoDialogComponent } from './turno-confirmado-dialog/turno-
   styleUrls: ['./nuevo-turno.component.css']
 })
 export class NuevoTurnoComponent implements OnInit {
-  cobertura: number = 0;
+  cobertura: number = 0;  // Variable que guardará el id de la cobertura
   especialidad: number = 0;
   profesional: number = 0;
   fecha: string = '';
@@ -24,60 +221,75 @@ export class NuevoTurnoComponent implements OnInit {
   profesionales: any[] = [];
   horariosDisponibles: string[] = [];
   profesionalNombre: string = '';
-  id_agenda: number = 1; 
-  id_paciente: number = 0; 
-  
+  id_agenda: number = 0;
+  id_paciente: number = 0;
+
   constructor(
     private turnoService: TurnoService,
     private especialidadService: EspecialidadService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private authService: AuthService,
+    private cdr: ChangeDetectorRef
   ) { }
 
-  ngOnInit(): void {
-    this.cargarCoberturas();
-    this.cargarEspecialidades();
-    this.obtenerIdPaciente();
-  }
+  nombreCobertura: string = ''; // Nueva variable para mostrar el nombre de la cobertura
+  coberturaSeleccionada: string | undefined;
+
+ 
+  /*   ngOnInit(): void {
+      const datosUsuario = this.authService.getDatosUsuario();
+      if (datosUsuario && datosUsuario.cobertura) {
+        this.coberturaSeleccionada = datosUsuario.cobertura; // Ajusta "cobertura" según la estructura de tu JSON
+      }
+    } */
+
+
+      ngOnInit(): void {
+        const datosUsuario = this.authService.getDatosUsuario();
+        if (datosUsuario && datosUsuario.cobertura) {
+          this.coberturaSeleccionada = datosUsuario.cobertura;
+          this.cdr.detectChanges(); // Forzar la detección de cambios
+          console.log('Cobertura seleccionada asignada:', this.coberturaSeleccionada);
+        } else {
+          console.log('No se encontró cobertura en los datos del usuario');
+        }
+      }
+
 
   obtenerIdPaciente() {
     const datosUsuario = JSON.parse(localStorage.getItem('datosUsuario') || '{}');
-    this.id_paciente = datosUsuario.id || 0;
+    this.id_paciente = datosUsuario.id ||  parseInt(localStorage.getItem('cobertura') || '0', 10);
+    console.log('Cobertura cargada desde localStorage:', this.cobertura);
   }
 
+ /*  cargarCoberturaUsuario() {
+    const datosUsuario = JSON.parse(localStorage.getItem('datosUsuario') || '{}');
+    this.cobertura = datosUsuario.id_cobertura || 0;
+  } */
 
 
 
+    cargarCoberturaUsuario() {
+      const datosUsuario = JSON.parse(localStorage.getItem('datosUsuario') || '{}');
+      this.cobertura = datosUsuario.id_cobertura || 0;
+      this.nombreCobertura = datosUsuario.nombre_cobertura || ''; // Supón que este es el nombre de la cobertura
+    }
 
 
   cargarCoberturas() {
     this.especialidadService.obtenerCoberturas().subscribe(response => {
-      console.log('Respuesta de obtenerCoberturas:', response);  
-      if (response.codigo === 200) {
-        
-        this.coberturas = response.payload[0];
-        console.log('Coberturas cargadas:', this.coberturas); 
+      if (response.codigo === 200 && Array.isArray(response.payload)) {
+        this.coberturas = response.payload;  // Asegúrate de que payload es un array
       } else {
-        console.error('Error:', response.mensaje);
+        console.error('Error al cargar coberturas:', response.mensaje);
       }
-    }, error => {
-      console.error('Error al cargar coberturas:', error); 
     });
   }
-  
-  
-
-
-
-
-
-  
-   
-
 
   cargarEspecialidades() {
     this.especialidadService.obtenerEspecialidades().subscribe(response => {
-      if (response.codigo === 200) {
+      if (response.codigo === 200 && Array.isArray(response.payload)) {
         this.especialidades = response.payload;
       } else {
         console.error(response.mensaje);
@@ -88,7 +300,7 @@ export class NuevoTurnoComponent implements OnInit {
   onEspecialidadChange() {
     const id_especialidad = this.especialidad;
     this.especialidadService.obtenerMedicoPorEspecialidad(id_especialidad).subscribe(response => {
-      if (response.codigo === 200) {
+      if (response.codigo === 200 && Array.isArray(response.payload)) {
         this.profesionales = response.payload;
       } else {
         console.error(response.mensaje);
@@ -98,14 +310,12 @@ export class NuevoTurnoComponent implements OnInit {
 
   onFechaChange() {
     const id_medico = this.profesional;
-    const fechaSeleccionada = new Date(this.fecha).toISOString().split('T')[0]; 
+    const fechaSeleccionada = new Date(this.fecha).toISOString().split('T')[0];
     this.turnoService.obtenerAgenda(id_medico).subscribe(response => {
-      console.log('Backend Response:', response); 
-      if (response.codigo === 200) {
+      if (response.codigo === 200 && Array.isArray(response.payload)) {
         this.horariosDisponibles = response.payload
           .filter((agenda: any) => new Date(agenda.fecha).toISOString().split('T')[0] === fechaSeleccionada)
           .map((agenda: any) => agenda.hora_entrada);
-        console.log('Horarios Disponibles:', this.horariosDisponibles); 
       } else {
         console.error(response.mensaje);
       }
@@ -119,7 +329,7 @@ export class NuevoTurnoComponent implements OnInit {
         id_agenda: this.id_agenda,
         fecha: this.fecha,
         hora: this.hora,
-        id_paciente: this.id_paciente, 
+        id_paciente: this.id_paciente,
         id_cobertura: this.cobertura
       };
 
@@ -167,206 +377,4 @@ export class NuevoTurnoComponent implements OnInit {
     this.closeModal();
     this.router.navigate(['/pacientes']);
   }
-} */
-
-
-
-
-
-
-
-
-  import { Component, OnInit } from '@angular/core';
-  import { TurnoService } from 'src/app/services/turno.service';
-  import { EspecialidadService } from 'src/app/services/especialidad.service';
-  import { Router } from '@angular/router';
-  import { MatDialog } from '@angular/material/dialog';
-  import { TurnoConfirmadoDialogComponent } from './turno-confirmado-dialog/turno-confirmado-dialog.component';
-  import { Turno } from 'src/app/interfaces/turno';
-  
-  @Component({
-    selector: 'app-nuevo-turno',
-    templateUrl: './nuevo-turno.component.html',
-    styleUrls: ['./nuevo-turno.component.css']
-  })
-  export class NuevoTurnoComponent implements OnInit {
-    cobertura: number = 0;  // Variable que guardará el id de la cobertura
-    especialidad: number = 0;
-    profesional: number = 0;
-    fecha: string = '';
-    hora: string = '';
-    notas: string = '';
-    showModal: boolean = false;
-    coberturas: any[] = [];
-    especialidades: any[] = [];
-    profesionales: any[] = [];
-    horariosDisponibles: string[] = [];
-    profesionalNombre: string = '';
-    id_agenda: number = 0; // Reemplaza con el valor adecuado para la agenda
-    id_paciente: number = 0; // Inicialización en 0 por seguridad
-  
-    constructor(
-      private turnoService: TurnoService,
-      private especialidadService: EspecialidadService,
-      private router: Router,
-      public dialog: MatDialog
-    ) { }
-  
-    ngOnInit(): void {
-      this.cargarCoberturas();
-      this.cargarEspecialidades();
-      this.obtenerIdPaciente();
-      this.cargarCoberturaUsuario();
-    }
-  
-    // Obtiene el id del paciente desde localStorage
-    obtenerIdPaciente() {
-      const datosUsuario = JSON.parse(localStorage.getItem('datosUsuario') || '{}');
-      this.id_paciente = datosUsuario.id || 0;  // Establece un valor seguro
-    }
-  
-    // Carga el valor de la cobertura desde localStorage
-    cargarCoberturaUsuario() {
-      const datosUsuario = JSON.parse(localStorage.getItem('datosUsuario') || '{}');
-      this.cobertura = datosUsuario.id_cobertura || 0;  // Asegura que la cobertura esté disponible
-    }
-  
-    // Carga las coberturas desde el servicio
-    cargarCoberturas() {
-      this.especialidadService.obtenerCoberturas().subscribe(response => {
-        if (response.codigo === 200 && Array.isArray(response.payload)) {
-          this.coberturas = response.payload[0];  // Verifica que payload es un array
-        } else {
-          console.error('Error al cargar coberturas:', response.mensaje);
-        }
-      });
-    }
-  
-    
-   /*  cargarEspecialidades() {
-      this.especialidadService.obtenerEspecialidades().subscribe(response => {
-        if (response.codigo === 200 && Array.isArray(response.payload)) {
-          this.especialidades = response.payload;
-        } else {
-          console.error(response.mensaje);
-        }
-      });
-    } */
-
-
-
-
-
-
-
-      cargarEspecialidades() {
-        this.especialidadService.obtenerEspecialidades().subscribe(response => {
-          console.log(response);  // Verifica la respuesta completa en consola
-          if (response.codigo === 200) {
-            this.especialidades = response.payload[0];  // Accede al primer array de especialidades
-            console.log(this.especialidades);  // Verifica que esta variable tenga los datos correctos
-          } else {
-            console.error(response.mensaje);
-          }
-        });
-      }
-      
-      
-      
-
-
-
-
-
-
-
-  
-    // Maneja el cambio de especialidad para cargar los profesionales
-    onEspecialidadChange() {
-      const id_especialidad = this.especialidad;
-      this.especialidadService.obtenerMedicoPorEspecialidad(id_especialidad).subscribe(response => {
-        if (response.codigo === 200 && Array.isArray(response.payload)) {
-          this.profesionales = response.payload;
-        } else {
-          console.error(response.mensaje);
-        }
-      });
-    }
-  
-    // Maneja el cambio de fecha para cargar las horas disponibles
-    onFechaChange() {
-      const id_medico = this.profesional;
-      const fechaSeleccionada = new Date(this.fecha).toISOString().split('T')[0];  // Formato de fecha YYYY-MM-DD
-      this.turnoService.obtenerAgenda(id_medico).subscribe(response => {
-        if (response.codigo === 200 && Array.isArray(response.payload)) {
-          this.horariosDisponibles = response.payload
-            .filter((agenda: any) => new Date(agenda.fecha).toISOString().split('T')[0] === fechaSeleccionada)
-            .map((agenda: any) => agenda.hora_entrada);
-        } else {
-          console.error(response.mensaje);
-        }
-      });
-    }
-  
-    // Maneja el envío del formulario
-    onSubmit(form: any) {
-      if (form.valid) {
-        const turno: Turno = {
-          nota: this.notas,
-          id_agenda: this.id_agenda,
-          fecha: this.fecha,
-          hora: this.hora,
-          id_paciente: this.id_paciente,
-          id_cobertura: this.cobertura  // La cobertura ya está precargada y no editable
-        };
-  
-        this.turnoService.agregarTurno(turno).subscribe(
-          response => {
-            if (response.codigo === 200) {
-              this.profesionalNombre = this.profesionales.find(p => p.id_medico === this.profesional)?.nombre || '';
-              this.openDialog();
-            } else {
-              alert('Error al asignar el turno: ' + response.mensaje);
-            }
-          },
-          error => {
-            console.error('Error en la petición', error);
-            alert('Ocurrió un error al asignar el turno');
-          }
-        );
-      }
-    }
-  
-    // Abre el modal de confirmación
-    openDialog(): void {
-      const dialogRef = this.dialog.open(TurnoConfirmadoDialogComponent, {
-        data: {
-          profesionalNombre: this.profesionalNombre,
-          fecha: this.fecha,
-          hora: this.hora
-        }
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        this.router.navigate(['/pacientes']);
-      });
-    }
-  
-    // Cancela la operación y redirige a pacientes
-    cancelar() {
-      this.router.navigate(['/pacientes']);
-    }
-  
-    // Cierra el modal y redirige a pacientes
-    closeModal() {
-      this.showModal = false;
-      this.router.navigate(['/pacientes']);
-    }
-  
-    // Confirma la operación y redirige a pacientes
-    confirm() {
-      this.closeModal();
-      this.router.navigate(['/pacientes']);
-    }
-  }
-  
+}
